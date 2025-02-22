@@ -3,14 +3,15 @@ import React, { use, useEffect, useState } from "react";
 import { API_KEY, geoApi, weatherApi } from "../config/api";
 import Layout from "../../layout/Layout";
 import CurrentWeather from "../components/CurrentWeather";
+import { Chart } from "../components/Chart";
 
 function HomePage() {
   const [currentCity, setCurrentCity] = useState("");
   const [cityName, setCityName] = useState(["تهران"]);
   const [allCity, setAllCity] = useState(null);
   const [language, setLanguage] = useState("fa");
-  const [units , setUnits] = useState("metric")
-  const { data, isPending , refetch } = useQuery({
+  const [units, setUnits] = useState("metric");
+  const { data, isPending, refetch } = useQuery({
     queryKey: ["geoLocation", cityName],
     queryFn: () =>
       geoApi.get(
@@ -31,14 +32,24 @@ function HomePage() {
     setCityName([...cityName, currentCity]);
   }
   console.log(data);
-  console.log(isPending)
+  console.log(isPending);
   return (
     <>
       <Layout>
         <input type="text" onChange={changeHandler} value={currentCity} />
         <button onClick={clickHandler}>کلیک</button>
         {isPending ? null : (
-          <CurrentWeather data={data} cityName={cityName} language={language} units={units}/>
+          <>
+            <div className="grid grid-cols-2 gap-3 px-[40px]">
+              <CurrentWeather
+                data={data}
+                cityName={cityName}
+                language={language}
+                units={units}
+              />
+              <Chart/>
+            </div>
+          </>
         )}
       </Layout>
     </>
