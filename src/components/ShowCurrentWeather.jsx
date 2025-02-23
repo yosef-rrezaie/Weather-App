@@ -5,16 +5,19 @@ import { FaArrowDown, FaArrowUp, FaWind } from "react-icons/fa6";
 // ['coord', 'weather', 'base', 'main', 'visibility', 'wind', 'rain', 'clouds', 'dt', 'sys', 'timezone', 'id', 'name', 'cod']
 function ShowCurrentWeather({ currentData }) {
 
+  const date = new Date(1740333600)
+  console.log()
+
   const image = currentData["weather"][0]["icon"];
   return (
-    <div className="flex bg-white my-[30px] p-[18px] rounded-[7px] shadow-lg items-center">
-      <div className="w-1/3">
+    <div className="flex bg-white rounded-[7px] shadow-lg p-[25px] h-[330px]">
+      <div className="w-3/5 "> 
         <div className="flex justify-between">
           <p className="font-normal">{currentData["name"]}</p>
           <span>{currentData["sys"]["country"]}</span>
         </div>
-        <div className="">
-          <p dir="ltr" className="text-center text-7xl my-[19px]">
+        <div className="p-[24px]">
+          <p dir="ltr" className="text-center text-7xl -[19px]">
             {Math.floor(currentData["main"]["temp"])}
             <span>°</span>
           </p>
@@ -42,7 +45,7 @@ function ShowCurrentWeather({ currentData }) {
         <div className="flex justify-between mt-[30px]">
           <div className="flex items-center">
             <span>
-              <WiHumidity className="text-[1.3rem] text-blue-800"/>
+              <WiHumidity className="text-[1.7rem] text-blue-800"/>
             </span>
             <div className="flex flex-col pr-[10px] gap-y-2">
               <p className="">رطوبت</p>
@@ -62,7 +65,7 @@ function ShowCurrentWeather({ currentData }) {
           </div>
         </div>
       </div>
-      <div className="w-2/3  flex items-center flex-col">
+      <div className="w-2/5 flex items-center flex-col justify-center">
         <img
           src={`https://openweathermap.org/img/wn/${image}@2x.png`}
           className="w-[130px]"

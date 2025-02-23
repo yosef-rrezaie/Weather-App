@@ -21,18 +21,20 @@ function FetchWeatherData({ data, cityName, language, units }) {
         `forecast?lat=${data[0].lat}&lon=${data[0].lon}&lang=${language}&units=${units}&appid=${API_KEY}`
       ),
   });
+  console.log("weatherForcastPending :", weatherForcastPending);
+  console.log("current :", currentDataPending);
 
-  console.log("current:" , currentData)
-  console.log("forcast:" , weatherForcast)
+  console.log("current:", currentData);
+  console.log("forcast:", weatherForcast);
 
   return (
     <>
-      {currentDataPending && weatherForcastPending === true ? null : (
-        <div className="grid grid-cols-2 gap-3 px-[60px]">
-          <ShowCurrentWeather
-            currentData={currentData}
-          />
-          <Chart />
+      {currentDataPending || weatherForcastPending === true ? null : (
+        <div>
+          <div className="grid grid-cols-2 gap-5 m-[33px] box-border min-h-[300px]">
+              <ShowCurrentWeather currentData={currentData} />
+              <Chart weatherForcast={weatherForcast} />
+          </div>
         </div>
       )}
     </>
