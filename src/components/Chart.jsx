@@ -35,7 +35,7 @@ function Chart({ weatherForcast }) {
           <XAxis dataKey="name" tick={{ fontSize: 14 }} dy={10} />
           <YAxis tickFormatter={(value) => `${value}°C`} tick={{ fontSize: 14 }} dx={-35} />
           <Tooltip  formatter={(value) => `${value}°C`} />
-          <Line type="monotone" dataKey="دما" stroke="#3A80BA" strokeWidth={3} dot={{ r: 0 }} />
+          <Line type="monotone" dataKey="دما" stroke="#3A80BA" strokeWidth={3} dot={{ r: 2 }} />
         </LineChart>
       </ResponsiveContainer>
     </div>
