@@ -1,9 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
-import React, { use, useEffect, useState } from "react";
+import React, {useState } from "react";
 import { API_KEY, geoApi, weatherApi } from "../config/api";
 import Layout from "../../layout/Layout";
-import CurrentWeather from "../components/CurrentWeather";
-import { Chart } from "../components/Chart";
+import FetchWeatherData from "../components/FetchWeatherData";
 
 function HomePage() {
   const [currentCity, setCurrentCity] = useState("");
@@ -33,6 +32,7 @@ function HomePage() {
   }
   console.log(data);
   console.log(isPending);
+
   return (
     <>
       <Layout>
@@ -40,15 +40,7 @@ function HomePage() {
         <button onClick={clickHandler}>کلیک</button>
         {isPending ? null : (
           <>
-            <div className="grid grid-cols-2 gap-3 px-[40px]">
-              <CurrentWeather
-                data={data}
-                cityName={cityName}
-                language={language}
-                units={units}
-              />
-              <Chart/>
-            </div>
+            <FetchWeatherData data={data} cityName={cityName} language={language} units={units}/>
           </>
         )}
       </Layout>

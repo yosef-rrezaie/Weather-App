@@ -4,6 +4,7 @@ import { FaArrowDown, FaArrowUp, FaWind } from "react-icons/fa6";
 
 // ['coord', 'weather', 'base', 'main', 'visibility', 'wind', 'rain', 'clouds', 'dt', 'sys', 'timezone', 'id', 'name', 'cod']
 function ShowCurrentWeather({ currentData }) {
+
   const image = currentData["weather"][0]["icon"];
   return (
     <div className="flex bg-white my-[30px] p-[18px] rounded-[7px] shadow-lg items-center">
