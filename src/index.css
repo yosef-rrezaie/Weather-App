@@ -17,3 +17,7 @@ body {
   height: 100vh;
   
 }
+
+.custom-grid-cols {
+  grid-template-columns: 1fr 1.1fr;
+}
