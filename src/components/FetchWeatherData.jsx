@@ -37,7 +37,7 @@ function FetchWeatherData({ data, cityName, language, units }) {
             <ShowCurrentWeather currentData={currentData} />
             <Chart weatherForcast={weatherForcast} />
           </div>
-          <div className="mx-[43px] grid custom-grid-cols gap-5 min-h-[300px]">
+          <div className="mx-[43px] grid custom-grid-cols gap-5 min-h-[300px] pb-[20px]">
             <DetailWeather currentData={currentData} />
             <ForcastWeather />
           </div>
