@@ -10,7 +10,7 @@ function ShowCurrentWeather({ currentData }) {
 
   const image = currentData["weather"][0]["icon"];
   return (
-    <div className="flex bg-white rounded-[7px] shadow-lg p-[25px] h-[330px]">
+    <div className="flex bg-white rounded-[7px] shadow-lg p-[25px] h-[360px] ]">
       <div className="w-3/5 "> 
         <div className="flex justify-between">
           <p className="font-normal">{currentData["name"]}</p>
