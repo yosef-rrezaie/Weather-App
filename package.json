@@ -12,6 +12,7 @@
   "dependencies": {
     "@tanstack/react-query": "^5.66.8",
     "axios": "^1.7.9",
+    "moment-jalaali": "^0.10.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "redux": "^5.0.1"

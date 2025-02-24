@@ -4,7 +4,7 @@ import { FaArrowDown, FaArrowUp, FaWind } from "react-icons/fa6";
 
 // ['coord', 'weather', 'base', 'main', 'visibility', 'wind', 'rain', 'clouds', 'dt', 'sys', 'timezone', 'id', 'name', 'cod']
 function ShowCurrentWeather({ currentData }) {
-
+  
   const date = new Date(1740333600)
   console.log()
 
