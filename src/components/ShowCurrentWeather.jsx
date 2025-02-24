@@ -1,24 +1,23 @@
 import React from "react";
 import { WiHumidity } from "react-icons/wi";
 import { FaArrowDown, FaArrowUp, FaWind } from "react-icons/fa6";
-
+import e2p from "../../config/e2p";
 // ['coord', 'weather', 'base', 'main', 'visibility', 'wind', 'rain', 'clouds', 'dt', 'sys', 'timezone', 'id', 'name', 'cod']
 function ShowCurrentWeather({ currentData }) {
-  
-  const date = new Date(1740333600)
-  console.log()
+  const date = new Date(1740333600);
+  console.log();
 
   const image = currentData["weather"][0]["icon"];
   return (
     <div className="flex bg-white rounded-[7px] shadow-lg p-[25px] h-[360px] ]">
-      <div className="w-3/5 "> 
+      <div className="w-3/5 ">
         <div className="flex justify-between">
           <p className="font-normal">{currentData["name"]}</p>
           <span>{currentData["sys"]["country"]}</span>
         </div>
         <div className="p-[24px]">
           <p dir="ltr" className="text-center text-7xl -[19px]">
-            {Math.floor(currentData["main"]["temp"])}
+            {e2p(Math.floor(currentData["main"]["temp"]))}
             <span>°</span>
           </p>
           <div>
@@ -31,12 +30,12 @@ function ShowCurrentWeather({ currentData }) {
             <div dir="ltr" className="flex justify-evenly items-center">
               <p className="flex text-blue-800 text-[1.3rem]">
                 <FaArrowDown className="" />
-                {Math.floor(currentData["main"]["temp_min"])}
+                {e2p(Math.floor(currentData["main"]["temp_min"]))}
                 <span>°</span>
               </p>
               <p className="flex text-red-800 text-[1.3rem]">
                 <FaArrowUp />
-                {Math.floor(currentData["main"]["temp_max"])}
+                {e2p(Math.floor(currentData["main"]["temp_max"]))}
                 <span>°</span>
               </p>
             </div>
@@ -45,12 +44,13 @@ function ShowCurrentWeather({ currentData }) {
         <div className="flex justify-between mt-[30px]">
           <div className="flex items-center">
             <span>
-              <WiHumidity className="text-[1.7rem] text-blue-800"/>
+              <WiHumidity className="text-[1.7rem] text-blue-800" />
             </span>
             <div className="flex flex-col pr-[10px] gap-y-2">
               <p className="">رطوبت</p>
               <span className="font-thin">
-                {currentData["main"]["humidity"]}<span>%</span>
+                {e2p(currentData["main"]["humidity"])}
+                <span>%</span>
               </span>
             </div>
           </div>
@@ -60,7 +60,10 @@ function ShowCurrentWeather({ currentData }) {
             </span>
             <div className="flex flex-col pr-[10px] gap-y-2">
               <p>سرعت باد</p>
-              <span className="font-thin">{Math.floor(currentData["wind"]["speed"])} <span>متر بر ثانیه</span></span>
+              <span className="font-thin">
+                {e2p(Math.floor(currentData["wind"]["speed"]))} <span></span>
+                <span>متر بر ثانیه</span>
+              </span>
             </div>
           </div>
         </div>

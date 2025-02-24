@@ -1,6 +1,7 @@
 import React from "react";
 import moment from "moment-jalaali";
 import { FaArrowDown, FaArrowUp, FaWind } from "react-icons/fa6";
+import e2p from "../../config/e2p";
 
 function ForcastWeather({ weatherForcast }) {
   //   const convrtTimeStamp = (timestamp) => {
@@ -42,7 +43,7 @@ function ForcastWeather({ weatherForcast }) {
 
   return (
     <div className="bg-white rounded-[7px] shadow-lg grid grid-cols-1  p-[25px] gap-7 h-[500px] ">
-      <p>دمای 5 روز آینده</p>
+      <p>دمای {e2p(5)} روز آینده</p>
       {temp.map((item) => (
         <div
           key={item.index}
@@ -52,19 +53,19 @@ function ForcastWeather({ weatherForcast }) {
             {moment.unix(item["stamp"]).format("dddd") === "آدینه"
               ? "جمعه"
               : moment.unix(item["stamp"]).format("dddd")}
-            <span>°</span>،
+            <span></span> ،
             <span>{moment.unix(item["stamp"]).format("jD jMMMM")}</span>
           </p>
-          <div className="flex w-1/4 ">
+          <div className="flex w-1/4 justify-center ">
             <div className="flex justify-between ml-[10px]">
               °
               <p dir="ltr" className="">
-                {item["min"]}
+                {e2p(item["min"])}
               </p>
               <FaArrowDown className="text-blue-800" />
             </div>
             <div className="flex">
-              °<p>{item["max"]}</p>
+              °<p dir="ltr">{e2p(item["max"])}</p>
               <FaArrowUp className="text-red-800" />
             </div>
           </div>
