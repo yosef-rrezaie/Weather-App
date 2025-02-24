@@ -3,6 +3,7 @@ import { BsFillSunriseFill, BsFillSunsetFill } from "react-icons/bs";
 import { GiMultiDirections } from "react-icons/gi";
 import { IoIosSpeedometer } from "react-icons/io";
 import { dateConverter } from "../../config/dateConverter";
+import e2p from "../../config/e2p";
 
 function DetailWeather({ currentData }) {
   return (
@@ -18,8 +19,8 @@ function DetailWeather({ currentData }) {
               <div className="flex flex-col pr-[10px] gap-y-2">
                 <p className="">طلوع</p>
                 <span className="font-thin">
-                  {dateConverter(currentData["sys"]["sunrise"], "sunrise")} قبل
-                  از ظهر
+                  {e2p(dateConverter(currentData["sys"]["sunrise"]), "sunrise")}{" "}
+                  قبل از ظهر
                 </span>
               </div>
             </div>
@@ -35,8 +36,8 @@ function DetailWeather({ currentData }) {
               <div className="flex flex-col pr-[10px] gap-y-2">
                 <p className="">غروب</p>
                 <span className="font-thin">
-                  {dateConverter(currentData["sys"]["sunset"], "sunset")} بعد از
-                  ظهر
+                  {e2p(dateConverter(currentData["sys"]["sunset"]), "sunset")}{" "}
+                  بعد از ظهر
                 </span>
               </div>
             </div>
@@ -51,7 +52,9 @@ function DetailWeather({ currentData }) {
               </span>
               <div className="flex flex-col pr-[10px] gap-y-2">
                 <p className="">جهت باد</p>
-                <span className="font-thin">{currentData["wind"]["deg"]}°</span>
+                <span className="font-thin">
+                  {e2p(currentData["wind"]["deg"])}°
+                </span>
               </div>
             </div>
           </div>
@@ -66,7 +69,7 @@ function DetailWeather({ currentData }) {
               <div className="flex flex-col pr-[10px] gap-y-2">
                 <p className="">فشار</p>
                 <span className="font-thin">
-                  {currentData["main"]["pressure"]} پاسکال
+                  {e2p(currentData["main"]["pressure"])} پاسکال
                 </span>
               </div>
             </div>
