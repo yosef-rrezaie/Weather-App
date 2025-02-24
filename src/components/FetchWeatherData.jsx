@@ -23,8 +23,6 @@ function FetchWeatherData({ data, cityName, language, units }) {
         `forecast?lat=${data[0].lat}&lon=${data[0].lon}&lang=${language}&units=${units}&appid=${API_KEY}`
       ),
   });
-  console.log("weatherForcastPending :", weatherForcastPending);
-  console.log("current :", currentDataPending);
 
   console.log("current:", currentData);
   console.log("forcast:", weatherForcast);

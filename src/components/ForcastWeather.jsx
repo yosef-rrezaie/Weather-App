@@ -4,10 +4,6 @@ import { FaArrowDown, FaArrowUp, FaWind } from "react-icons/fa6";
 import e2p from "../../config/e2p";
 
 function ForcastWeather({ weatherForcast }) {
-  //   const convrtTimeStamp = (timestamp) => {
-  //     let date = moment.unix(timestamp).locale("fa").format("jD jMMMM");
-  //     let dayOfWeek = moment.unix(timestamp).locale("fa").format("dddd");
-  //   };
   moment.loadPersian({ usePersianDigits: true });
 
   let data = weatherForcast["list"];
@@ -39,7 +35,6 @@ function ForcastWeather({ weatherForcast }) {
     });
   }
 
-  console.log(temp);
 
   return (
     <div className="bg-white rounded-[7px] shadow-lg grid grid-cols-1  p-[25px] gap-7 h-[500px] ">
