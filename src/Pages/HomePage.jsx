@@ -31,7 +31,6 @@ function HomePage() {
     setCityName([...cityName, currentCity]);
   }
   console.log(data);
-  console.log(isPending);
 
   return (
     <>

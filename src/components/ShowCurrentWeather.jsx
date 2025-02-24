@@ -4,8 +4,6 @@ import { FaArrowDown, FaArrowUp, FaWind } from "react-icons/fa6";
 import e2p from "../../config/e2p";
 // ['coord', 'weather', 'base', 'main', 'visibility', 'wind', 'rain', 'clouds', 'dt', 'sys', 'timezone', 'id', 'name', 'cod']
 function ShowCurrentWeather({ currentData }) {
-  const date = new Date(1740333600);
-  console.log();
 
   const image = currentData["weather"][0]["icon"];
   return (

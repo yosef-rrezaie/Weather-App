@@ -26,7 +26,6 @@ function Chart({ weatherForcast }) {
     data.push(x);
   }
 
-  console.log(data);
   return (
     <div className="bg-white shadow-lg rounded-lg p-[25px]  h-[360px] flex-grow">
       <h2 className="text-xl font-semibold text-gray-700 mb-4">نمودار دما</h2>
