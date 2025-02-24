@@ -39,7 +39,7 @@ function FetchWeatherData({ data, cityName, language, units }) {
           </div>
           <div className="mx-[43px] grid custom-grid-cols gap-5 min-h-[300px] pb-[20px]">
             <DetailWeather currentData={currentData} />
-            <ForcastWeather />
+            <ForcastWeather weatherForcast={weatherForcast} />
           </div>
         </div>
       )}
