@@ -1,5 +1,6 @@
 import React from "react";
 import moment from "moment-jalaali";
+import { FaArrowDown, FaArrowUp, FaWind } from "react-icons/fa6";
 
 function ForcastWeather({ weatherForcast }) {
   //   const convrtTimeStamp = (timestamp) => {
@@ -40,18 +41,32 @@ function ForcastWeather({ weatherForcast }) {
   console.log(temp);
 
   return (
-    <div className="bg-white rounded-[7px] shadow-lg">
+    <div className="bg-white rounded-[7px] shadow-lg grid grid-cols-1  p-[25px] gap-7 h-[500px] ">
+      <p>دمای 5 روز آینده</p>
       {temp.map((item) => (
-        <div key={item.index}>
-          <p>
+        <div
+          key={item.index}
+          className="flex justify-around  items-center rounded-[7px] shadow-sm p-[10px]"
+        >
+          <p className="w-3/4">
             {moment.unix(item["stamp"]).format("dddd") === "آدینه"
               ? "جمعه"
-              : moment.unix(item["stamp"]).format("dddd")} ،  
+              : moment.unix(item["stamp"]).format("dddd")}
+            <span>°</span>،
             <span>{moment.unix(item["stamp"]).format("jD jMMMM")}</span>
           </p>
-          <div>
-            <p>{item["min"]}</p>
-            <p>{item["max"]}</p>
+          <div className="flex w-1/4 ">
+            <div className="flex justify-between ml-[10px]">
+              °
+              <p dir="ltr" className="">
+                {item["min"]}
+              </p>
+              <FaArrowDown className="text-blue-800" />
+            </div>
+            <div className="flex">
+              °<p>{item["max"]}</p>
+              <FaArrowUp className="text-red-800" />
+            </div>
           </div>
         </div>
       ))}

@@ -6,7 +6,7 @@ import { dateConverter } from "../../config/dateConverter";
 
 function DetailWeather({ currentData }) {
   return (
-    <div className="bg-white rounded-[7px] shadow-lg p-[25px]">
+    <div className="bg-white rounded-[7px] shadow-lg p-[25px] h-[300px]">
       <p>جزئیات آب و هوا</p>
       <div className="flex flex-wrap">
         <div className="w-1/2">
