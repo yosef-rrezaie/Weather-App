@@ -62,7 +62,7 @@ function ShowCurrentWeather({ currentData, units, setUnits }) {
               <p>سرعت باد</p>
               <span className="font-thin">
                 {e2p(Math.floor(currentData["wind"]["speed"]))} <span></span>
-                <span>متر بر ثانیه</span>
+                <span>{units === "imperial" ? "مایل بر ساعت" : "متر بر ثانیه"}</span>
               </span>
             </div>
           </div>
