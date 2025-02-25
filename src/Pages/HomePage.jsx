@@ -3,6 +3,7 @@ import React, { createContext, useState } from "react";
 import { API_KEY, geoApi, weatherApi } from "../config/api";
 import Layout from "../layout/Layout";
 import FetchWeatherData from "../components/FetchWeatherData";
+import SearchFailed from "../components/SearchFailed";
 
 export const ComponentsContext = createContext();
 function HomePage() {
@@ -52,14 +53,17 @@ function HomePage() {
           clickHandler,
         }}
       >
-        <Layout
-         
-        >
-          {isPending ? null : (
+        <Layout>
+          {data?.length === 0 ? (
+            <SearchFailed />
+          ) : isPending ? null : (
+            <FetchWeatherData />
+          )}
+          {/* {isPending ? null : (
             <>
               <FetchWeatherData />
             </>
-          )}
+          )} */}
         </Layout>
       </ComponentsContext.Provider>
     </>
