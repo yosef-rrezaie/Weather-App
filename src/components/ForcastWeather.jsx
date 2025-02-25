@@ -48,8 +48,7 @@ function ForcastWeather({ weatherForcast }) {
             {moment.unix(item["stamp"]).format("dddd") === "آدینه"
               ? "جمعه"
               : moment.unix(item["stamp"]).format("dddd")}
-              <span> </span>
-             ، <span></span>
+            <span> </span>، <span></span>
             <span>{moment.unix(item["stamp"]).format("jD jMMMM")}</span>
           </p>
           <div className="flex w-1/4 justify-center  ">

@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import React, {useState } from "react";
+import React, { useState } from "react";
 import { API_KEY, geoApi, weatherApi } from "../config/api";
 import Layout from "../../layout/Layout";
 import FetchWeatherData from "../components/FetchWeatherData";
@@ -34,12 +34,18 @@ function HomePage() {
 
   return (
     <>
-      <Layout>
+      <Layout cityName={cityName}>
         <input type="text" onChange={changeHandler} value={currentCity} />
         <button onClick={clickHandler}>کلیک</button>
         {isPending ? null : (
           <>
-            <FetchWeatherData data={data} cityName={cityName} language={language} units={units} setUnits={setUnits}/>
+            <FetchWeatherData
+              data={data}
+              cityName={cityName}
+              language={language}
+              units={units}
+              setUnits={setUnits}
+            />
           </>
         )}
       </Layout>

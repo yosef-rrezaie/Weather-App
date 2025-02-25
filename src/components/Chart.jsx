@@ -27,7 +27,7 @@ function Chart({ weatherForcast }) {
   }
 
   return (
-    <div className="bg-white shadow rounded-[9px] p-[25px]  h-[360px] flex-grow border border-solid border-gray-200">
+    <div className="bg-white shadow rounded-[9px] p-[25px]   flex-grow border border-solid border-gray-200">
       <h2 className="text-xl font-semibold text-gray-700 mb-4">نمودار دما</h2>
       <ResponsiveContainer width="100%" height={300}>
         <LineChart

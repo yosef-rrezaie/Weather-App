@@ -15,7 +15,7 @@ function ShowCurrentWeather({ currentData, units, setUnits }) {
 
   const image = currentData["weather"][0]["icon"];
   return (
-    <div className="flex bg-white rounded-[9px] shadow p-[25px] h-[370px] border border-solid border-gray-200">
+    <div className="flex bg-white rounded-[9px] shadow p-[25px] flex-grow border border-solid border-gray-200">
       <div className="w-3/5 ">
         <div className="flex justify-between">
           <p className="font-normal">{currentData["name"]}</p>
@@ -27,12 +27,6 @@ function ShowCurrentWeather({ currentData, units, setUnits }) {
             <span>°</span>
           </p>
           <div>
-            {/* <div>
-              <p>
-                دمای احساسی : {Math.floor(currentData["main"]["feels_like"])}
-                <span>°</span>
-              </p>
-            </div> */}
             <div dir="ltr" className="flex justify-evenly items-center">
               <p className="flex text-blue-800 text-[1.3rem]">
                 <FaArrowDown className="" />
