@@ -39,7 +39,7 @@ function HomePage() {
         <button onClick={clickHandler}>کلیک</button>
         {isPending ? null : (
           <>
-            <FetchWeatherData data={data} cityName={cityName} language={language} units={units}/>
+            <FetchWeatherData data={data} cityName={cityName} language={language} units={units} setUnits={setUnits}/>
           </>
         )}
       </Layout>
