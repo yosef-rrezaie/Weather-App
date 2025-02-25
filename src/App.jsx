@@ -8,6 +8,7 @@ function App() {
         refetchOnWindowFocus: false,
         refetchOnMount: false,
         staleTime: 60 * 1000,
+        retry : 1
       },
     },
   });
