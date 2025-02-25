@@ -7,7 +7,7 @@ import e2p from "../../config/e2p";
 
 function DetailWeather({ currentData }) {
   return (
-    <div className="bg-white rounded-[7px] shadow-lg p-[25px] h-[300px]">
+    <div className="bg-white rounded-[9px] shadow p-[25px] h-[300px] border border-solid border-gray-200">
       <p>جزئیات آب و هوا</p>
       <div className="flex flex-wrap">
         <div className="w-1/2">

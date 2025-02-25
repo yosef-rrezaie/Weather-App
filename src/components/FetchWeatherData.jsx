@@ -6,10 +6,10 @@ import { Chart } from "./Chart";
 import DetailWeather from "./DetailWeather";
 import ForcastWeather from "./ForcastWeather";
 
-function FetchWeatherData({ data, cityName, language, units }) {
+function FetchWeatherData({ data, cityName, language, units , setUnits }) {
   console.log(data[0].lat, data[0].lon);
   const { data: currentData, isPending: currentDataPending } = useQuery({
-    queryKey: ["currentWeather", cityName],
+    queryKey: ["currentWeather", cityName , units],
     queryFn: () =>
       weatherApi.get(
         `weather?lat=${data[0].lat}&lon=${data[0].lon}&lang=${language}&units=${units}&appid=${API_KEY}`
@@ -17,7 +17,7 @@ function FetchWeatherData({ data, cityName, language, units }) {
   });
 
   const { data: weatherForcast, isPending: weatherForcastPending } = useQuery({
-    queryKey: ["weatherForcast", cityName],
+    queryKey: ["weatherForcast", cityName , units],
     queryFn: () =>
       weatherApi.get(
         `forecast?lat=${data[0].lat}&lon=${data[0].lon}&lang=${language}&units=${units}&appid=${API_KEY}`
@@ -32,7 +32,7 @@ function FetchWeatherData({ data, cityName, language, units }) {
       {currentDataPending || weatherForcastPending === true ? null : (
         <div>
           <div className="grid grid-cols-2 gap-5 m-[43px]  min-h-[300px]">
-            <ShowCurrentWeather currentData={currentData} />
+            <ShowCurrentWeather currentData={currentData} units={units} setUnits={setUnits} />
             <Chart weatherForcast={weatherForcast} />
           </div>
           <div className="mx-[43px] grid custom-grid-cols gap-5 min-h-[300px] pb-[20px]">

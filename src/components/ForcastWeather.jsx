@@ -35,23 +35,24 @@ function ForcastWeather({ weatherForcast }) {
     });
   }
 
-
   return (
-    <div className="bg-white rounded-[7px] shadow-lg grid grid-cols-1  p-[25px] gap-7 h-[500px] ">
+    <div className="bg-white rounded-[9px] shadow grid grid-cols-1  p-[25px] gap-7 h-[550px] border border-solid border-gray-200">
       <p>دمای {e2p(5)} روز آینده</p>
       {temp.map((item) => (
         <div
           key={item.index}
-          className="flex justify-around  items-center rounded-[7px] shadow-sm p-[10px]"
+          className="flex justify-around
+            items-center rounded-[7px]  p-[10px] border-[.5px] border-solid border-gray-100 shadow-sm	 "
         >
           <p className="w-3/4">
             {moment.unix(item["stamp"]).format("dddd") === "آدینه"
               ? "جمعه"
               : moment.unix(item["stamp"]).format("dddd")}
-            <span></span> ،
+              <span> </span>
+             ، <span></span>
             <span>{moment.unix(item["stamp"]).format("jD jMMMM")}</span>
           </p>
-          <div className="flex w-1/4 justify-center ">
+          <div className="flex w-1/4 justify-center  ">
             <div className="flex justify-between ml-[10px]">
               °
               <p dir="ltr" className="">

@@ -3,11 +3,19 @@ import { WiHumidity } from "react-icons/wi";
 import { FaArrowDown, FaArrowUp, FaWind } from "react-icons/fa6";
 import e2p from "../../config/e2p";
 // ['coord', 'weather', 'base', 'main', 'visibility', 'wind', 'rain', 'clouds', 'dt', 'sys', 'timezone', 'id', 'name', 'cod']
-function ShowCurrentWeather({ currentData }) {
+function ShowCurrentWeather({ currentData, units, setUnits }) {
+  const setUnitsHandler = (e) => {
+    const value = e.target.value;
+    if (value === "metric") {
+      setUnits("metric");
+    } else {
+      setUnits("imperial");
+    }
+  };
 
   const image = currentData["weather"][0]["icon"];
   return (
-    <div className="flex bg-white rounded-[7px] shadow-lg p-[25px] h-[360px] ]">
+    <div className="flex bg-white rounded-[9px] shadow p-[25px] h-[370px] border border-solid border-gray-200">
       <div className="w-3/5 ">
         <div className="flex justify-between">
           <p className="font-normal">{currentData["name"]}</p>
@@ -64,6 +72,27 @@ function ShowCurrentWeather({ currentData }) {
               </span>
             </div>
           </div>
+        </div>
+        <div className="mt-[30px] pr-[10px] gap-5 flex text-[.7rem]">
+          <button
+            onClick={setUnitsHandler}
+            className={`rounded-[7px]  p-[10px] border-[.5px] border-solid border-blue-400 shadow-lg ${
+              units === "metric" ? "bg-blue-500 text-white" : null
+            }
+            }`}
+            value="metric"
+          >
+            سلسیوس
+          </button>
+          <button
+            onClick={setUnitsHandler}
+            value="Imperial"
+            className={`rounded-[7px]  p-[10px] border-[.5px] border-solid border-blue-400 shadow-lg ${
+              units === "imperial" ? "bg-blue-500 text-white" : null
+            } `}
+          >
+            کلوین
+          </button>
         </div>
       </div>
       <div className="w-2/5 flex items-center flex-col justify-center">
