@@ -2,8 +2,7 @@ import React from "react";
 import moment from "moment-jalaali";
 import { FaArrowDown, FaArrowUp, FaWind } from "react-icons/fa6";
 
-
-function ShowForcastWeather({temp}) {
+function ShowForcastWeather({ temp }) {
   moment.loadPersian({ usePersianDigits: true });
 
   return (
