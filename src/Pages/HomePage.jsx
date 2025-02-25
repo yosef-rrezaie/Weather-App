@@ -4,14 +4,14 @@ import { API_KEY, geoApi, weatherApi } from "../config/api";
 import Layout from "../layout/Layout";
 import FetchWeatherData from "../components/FetchWeatherData";
 
-export const UserContext = createContext();
+export const ComponentsContext = createContext();
 function HomePage() {
   const [currentCity, setCurrentCity] = useState("");
   const [cityName, setCityName] = useState(["تهران"]);
   const [allCity, setAllCity] = useState(null);
   const [language, setLanguage] = useState("fa");
   const [units, setUnits] = useState("metric");
-  const [favorite, setFavorite] = useState(true);
+  const [favorite, setFavorite] = useState(false);
   const { data, isPending, refetch, isError, error } = useQuery({
     queryKey: ["geoLocation", cityName],
     queryFn: () =>
@@ -38,25 +38,30 @@ function HomePage() {
 
   return (
     <>
-      <Layout
-        changeHandler={changeHandler}
-        currentCity={currentCity}
-        clickHandler={clickHandler}
+      <ComponentsContext.Provider
+        value={{
+          favorite,
+          setFavorite,
+          data,
+          cityName,
+          language,
+          units,
+          setUnits,
+          changeHandler,
+          currentCity,
+          clickHandler,
+        }}
       >
-        {isPending ? null : (
-          <>
-            <UserContext.Provider value={{favorite , setFavorite}}>
-              <FetchWeatherData
-                data={data}
-                cityName={cityName}
-                language={language}
-                units={units}
-                setUnits={setUnits}
-              />
-            </UserContext.Provider>
-          </>
-        )}
-      </Layout>
+        <Layout
+         
+        >
+          {isPending ? null : (
+            <>
+              <FetchWeatherData />
+            </>
+          )}
+        </Layout>
+      </ComponentsContext.Provider>
     </>
   );
 }

@@ -3,9 +3,11 @@ import { WiHumidity } from "react-icons/wi";
 import { FaArrowDown, FaArrowUp, FaHeart, FaWind } from "react-icons/fa6";
 import e2p from "../../config/e2p";
 import { CiHeart } from "react-icons/ci";
+import { ComponentsContext } from "../Pages/HomePage";
 // ['coord', 'weather', 'base', 'main', 'visibility', 'wind', 'rain', 'clouds', 'dt', 'sys', 'timezone', 'id', 'name', 'cod']
-function ShowCurrentWeather({ currentData, units, setUnits }) {
-  const { favorite, setFavorite } = useContext(UserContext);
+function ShowCurrentWeather({ currentData}) {
+  const {units , setUnits} = useContext(ComponentsContext)
+  const { favorite, setFavorite } = useContext(ComponentsContext);
   console.log(favorite);
 
   function setFavoriteHandler() {
@@ -119,6 +121,5 @@ function ShowCurrentWeather({ currentData, units, setUnits }) {
     </div>
   );
 }
-import { UserContext } from "../Pages/HomePage";
 
 export default ShowCurrentWeather;
