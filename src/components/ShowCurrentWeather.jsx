@@ -1,9 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import { WiHumidity } from "react-icons/wi";
-import { FaArrowDown, FaArrowUp, FaWind } from "react-icons/fa6";
+import { FaArrowDown, FaArrowUp, FaHeart, FaWind } from "react-icons/fa6";
 import e2p from "../../config/e2p";
+import { CiHeart } from "react-icons/ci";
 // ['coord', 'weather', 'base', 'main', 'visibility', 'wind', 'rain', 'clouds', 'dt', 'sys', 'timezone', 'id', 'name', 'cod']
 function ShowCurrentWeather({ currentData, units, setUnits }) {
+  const { favorite, setFavorite } = useContext(UserContext);
+  console.log(favorite);
+
+  function setFavoriteHandler() {
+    setFavorite(!favorite);
+  }
+
   const setUnitsHandler = (e) => {
     const value = e.target.value;
     if (value === "metric") {
@@ -62,7 +70,9 @@ function ShowCurrentWeather({ currentData, units, setUnits }) {
               <p>سرعت باد</p>
               <span className="font-thin">
                 {e2p(Math.floor(currentData["wind"]["speed"]))} <span></span>
-                <span>{units === "imperial" ? "مایل بر ساعت" : "متر بر ثانیه"}</span>
+                <span>
+                  {units === "imperial" ? "مایل بر ساعت" : "متر بر ثانیه"}
+                </span>
               </span>
             </div>
           </div>
@@ -96,8 +106,19 @@ function ShowCurrentWeather({ currentData, units, setUnits }) {
         />
         <p>{currentData["weather"][0]["description"]}</p>
       </div>
+      <div className="text-[25px]">
+        {!!favorite ? (
+          <FaHeart className="text-red-500" onClick={setFavoriteHandler} />
+        ) : (
+          <CiHeart
+            className="text-red-500 hover:text-red-700"
+            onClick={setFavoriteHandler}
+          />
+        )}
+      </div>
     </div>
   );
 }
+import { UserContext } from "../Pages/HomePage";
 
 export default ShowCurrentWeather;

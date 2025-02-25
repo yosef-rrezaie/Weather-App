@@ -1,16 +1,18 @@
 import { useQuery } from "@tanstack/react-query";
-import React, { useState } from "react";
+import React, { createContext, useState } from "react";
 import { API_KEY, geoApi, weatherApi } from "../config/api";
 import Layout from "../layout/Layout";
 import FetchWeatherData from "../components/FetchWeatherData";
 
+export const UserContext = createContext();
 function HomePage() {
   const [currentCity, setCurrentCity] = useState("");
   const [cityName, setCityName] = useState(["تهران"]);
   const [allCity, setAllCity] = useState(null);
   const [language, setLanguage] = useState("fa");
   const [units, setUnits] = useState("metric");
-  const { data, isPending, refetch } = useQuery({
+  const [favorite, setFavorite] = useState(true);
+  const { data, isPending, refetch, isError, error } = useQuery({
     queryKey: ["geoLocation", cityName],
     queryFn: () =>
       geoApi.get(
@@ -30,22 +32,28 @@ function HomePage() {
     }
     setCityName([...cityName, currentCity]);
   }
-  console.log(data);
+  console.log("data :", data);
+  console.log("isErorr :", isError);
+  console.log("Erorr :", error);
 
   return (
     <>
-      <Layout changeHandler={changeHandler} currentCity={currentCity} clickHandler={clickHandler}>
-        {/* <input type="text" onChange={changeHandler} value={currentCity} />
-        <button onClick={clickHandler}>کلیک</button> */}
+      <Layout
+        changeHandler={changeHandler}
+        currentCity={currentCity}
+        clickHandler={clickHandler}
+      >
         {isPending ? null : (
           <>
-            <FetchWeatherData
-              data={data}
-              cityName={cityName}
-              language={language}
-              units={units}
-              setUnits={setUnits}
-            />
+            <UserContext.Provider value={{favorite , setFavorite}}>
+              <FetchWeatherData
+                data={data}
+                cityName={cityName}
+                language={language}
+                units={units}
+                setUnits={setUnits}
+              />
+            </UserContext.Provider>
           </>
         )}
       </Layout>
