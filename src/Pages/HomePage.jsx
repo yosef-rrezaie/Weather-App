@@ -4,6 +4,7 @@ import { API_KEY, geoApi, weatherApi } from "../config/api";
 import Layout from "../layout/Layout";
 import FetchWeatherData from "../components/FetchWeatherData";
 import SearchFailed from "../components/SearchFailed";
+import Loading from "../components/Loading";
 
 export const ComponentsContext = createContext();
 function HomePage() {
@@ -28,6 +29,7 @@ function HomePage() {
   }
 
   function clickHandler() {
+    if (currentCity === "") return;
     if (cityName.find((item) => item === currentCity)) {
       return;
     }
@@ -54,9 +56,11 @@ function HomePage() {
         }}
       >
         <Layout>
-          {data?.length === 0 ? (
+          {data?.length === 0? (
             <SearchFailed />
-          ) : isPending ? null : (
+          ) : isPending ? (
+            <Loading />
+          ) : (
             <FetchWeatherData />
           )}
           {/* {isPending ? null : (
