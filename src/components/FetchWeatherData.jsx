@@ -55,9 +55,7 @@ function FetchWeatherData() {
             />
           </div>
           <div className="grid grid-cols-2 gap-5 mx-[43px] mb-[43px] mt-[25px]  min-h-[300px]">
-            <ShowCurrentWeather
-              currentData={currentData}
-            />
+            <ShowCurrentWeather currentData={currentData} />
             <Chart weatherForcast={weatherForcast} />
           </div>
           <div className="mx-[43px] grid custom-grid-cols gap-5 min-h-[300px] pb-[20px]">
