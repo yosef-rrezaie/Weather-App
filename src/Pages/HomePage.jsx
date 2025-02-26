@@ -23,7 +23,13 @@ function HomePage() {
   return (
     <>
       {/* <Layout> */}
-        {data?.length === 0 ? <SearchFailed /> : isPending ? <Loading /> : <FetchWeatherData data={data}/>}
+        {data?.length === 0 ? (
+          <SearchFailed />
+        ) : isPending ? (
+          <Loading />
+        ) : (
+          <FetchWeatherData data={data} />
+        )}
       {/* </Layout> */}
     </>
   );

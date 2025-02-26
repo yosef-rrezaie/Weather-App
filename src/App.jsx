@@ -33,9 +33,9 @@ function App() {
 
   function clickHandler() {
     if (currentCity === "") return;
-    if (cityName.find((item) => item === currentCity)) {
-      return;
-    }
+    // if (cityName.find((item) => item === currentCity)) {
+    //   return;
+    // }
     setCityName([...cityName, currentCity]);
   }
 
@@ -46,6 +46,7 @@ function App() {
           favorite,
           setFavorite,
           cityName,
+          setCityName ,
           language,
           units,
           setUnits,

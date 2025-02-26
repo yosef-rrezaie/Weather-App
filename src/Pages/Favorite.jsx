@@ -1,9 +1,7 @@
-import React from 'react'
+import React, { useContext } from 'react'
 
 function Favorite() {
-  return (
-    <div>Favorite</div>
-  )
+  
 }
 
 export default Favorite
