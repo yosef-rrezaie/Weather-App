@@ -22,5 +22,5 @@ body {
 }
 
 .active {
-  @apply text-red-800
+  @apply text-blue-500
 }

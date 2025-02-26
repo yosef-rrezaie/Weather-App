@@ -8,6 +8,7 @@ import ForcastWeather from "./ForcastWeather";
 import { IoIosRefreshCircle } from "react-icons/io";
 import { ComponentsContext } from "../App";
 import SearchRecently from "./SearchRecently";
+import Loading from "./Loading";
 
 function FetchWeatherData({data}) {
   const { cityName, language, units, setUnits, country, setCountry } =
@@ -48,7 +49,7 @@ function FetchWeatherData({data}) {
 
   return (
     <>
-      {currentDataPending || weatherForcastPending === true ? null : (
+      {currentDataPending || weatherForcastPending === true ? <Loading/> : (
         <div>
           {/* <div className="mx-[43px] mt-[30px]">
             <SearchRecently />

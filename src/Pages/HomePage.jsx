@@ -6,9 +6,12 @@ import FetchWeatherData from "../components/FetchWeatherData";
 import SearchFailed from "../components/SearchFailed";
 import Loading from "../components/Loading";
 import { ComponentsContext } from "../App"; // ایمپورت کانتکست از App.js
+import { useSelector } from "react-redux";
 
 function HomePage() {
   const { cityName, language } = useContext(ComponentsContext); // دریافت مقدار از کانتکست
+  const result = useSelector(store => store.Favorite.favoriteObject)
+  console.log("result :" , result)
 
   const { data, isPending } = useQuery({
     queryKey: ["geoLocation", cityName],
