@@ -1,17 +1,26 @@
 import { current } from "@reduxjs/toolkit";
 import React, { useContext } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import e2p from "../../config/e2p";
 import { FaArrowDown, FaArrowUp, FaHeart, FaWind } from "react-icons/fa6";
 import { WiHumidity } from "react-icons/wi";
 import { CiHeart } from "react-icons/ci";
 import { ComponentsContext } from "../App";
 import { ImCross } from "react-icons/im";
-
+import { removeFavorite } from "../feautures/favotire";
 function FavoriteCity() {
   const { units, favorite, setFavoriteHandler } = useContext(ComponentsContext);
   const result = useSelector((store) => store.Favorite.favoriteObject);
-  //   console.log(result);
+  const dispatch = useDispatch()
+    console.log(result);
+
+  function removeHandler(e) {
+    const value = Number(e.currentTarget.dataset.value);
+    const removeItem = result.filter(item => item["lon"]!== value)
+    console.log(removeItem)
+    dispatch(removeFavorite(value)); 
+
+  }
 
   return (
     <div className="grid grid-cols-3 gap-[30px]  px-[43px] mt-[30px] flex-wrap">
@@ -106,8 +115,12 @@ function FavoriteCity() {
             />
             <p>{item["data"]["weather"][0]["description"]}</p>
           </div>
-          <div className="text-[12px] text-red-600">
-            <ImCross value={item["lon"]} />
+          <div
+            className="text-[15px] text-red-600 h-max cursor-pointer"
+            data-value={`${item["lon"]}`}
+            onClick={removeHandler} 
+          >
+            <ImCross />
           </div>
         </div>
       ))}
