@@ -11,9 +11,12 @@ import SearchRecently from "./SearchRecently";
 import Loading from "./Loading";
 
 function FetchWeatherData({data}) {
-  const { cityName, language, units, setUnits, country, setCountry } =
+  const { cityName, language, units, setUnits, country, setCountry , favorite , setFavorite} =
     useContext(ComponentsContext);
 
+    useEffect(()=> {
+      setFavorite(false)
+    } , [])
   
   const {
     data: currentData,
