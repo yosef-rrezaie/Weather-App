@@ -1,21 +1,16 @@
 import { useQuery } from "@tanstack/react-query";
-import React, { createContext, useState } from "react";
-import { API_KEY, geoApi, weatherApi } from "../config/api";
+import React, { useContext } from "react";
+import { API_KEY, geoApi } from "../config/api";
 import Layout from "../layout/Layout";
 import FetchWeatherData from "../components/FetchWeatherData";
 import SearchFailed from "../components/SearchFailed";
 import Loading from "../components/Loading";
+import { ComponentsContext } from "../App"; // ایمپورت کانتکست از App.js
 
-export const ComponentsContext = createContext();
 function HomePage() {
-  const [currentCity, setCurrentCity] = useState("");
-  const [cityName, setCityName] = useState(["تهران"]);
-  const [allCity, setAllCity] = useState(null);
-  const [language, setLanguage] = useState("fa");
-  const [units, setUnits] = useState("metric");
-  const [favorite, setFavorite] = useState(false);
-  const [country, setCountry] = useState(["IR"]);
-  const { data, isPending, refetch, isError, error } = useQuery({
+  const { cityName, language } = useContext(ComponentsContext); // دریافت مقدار از کانتکست
+
+  const { data, isPending } = useQuery({
     queryKey: ["geoLocation", cityName],
     queryFn: () =>
       geoApi.get(
@@ -25,55 +20,11 @@ function HomePage() {
       ),
   });
 
-  function changeHandler(e) {
-    setCurrentCity(e.target.value);
-  }
-
-  function clickHandler() {
-    if (currentCity === "") return;
-    if (cityName.find((item) => item === currentCity)) {
-      return;
-    }
-    setCityName([...cityName, currentCity]);
-  }
-  // console.log("data :", data);
-  // console.log("isErorr :", isError);
-  // console.log("Erorr :", error);
-  console.log(country)
-
   return (
     <>
-      <ComponentsContext.Provider
-        value={{
-          favorite,
-          setFavorite,
-          data,
-          cityName,
-          language,
-          units,
-          setUnits,
-          changeHandler,
-          currentCity,
-          clickHandler,
-          country , 
-          setCountry
-        }}
-      >
-        <Layout>
-          {data?.length === 0? (
-            <SearchFailed />
-          ) : isPending ? (
-            <Loading />
-          ) : (
-            <FetchWeatherData />
-          )}
-          {/* {isPending ? null : (
-            <>
-              <FetchWeatherData />
-            </>
-          )} */}
-        </Layout>
-      </ComponentsContext.Provider>
+      {/* <Layout> */}
+        {data?.length === 0 ? <SearchFailed /> : isPending ? <Loading /> : <FetchWeatherData data={data}/>}
+      {/* </Layout> */}
     </>
   );
 }

@@ -3,6 +3,10 @@ import HomePage from "./Pages/HomePage";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import PageNotFound from "./Pages/PageNotFound";
 import Favorite from "./Pages/Favorite";
+import Layout from "./layout/Layout";
+import { createContext, useState } from "react";
+
+export const ComponentsContext = createContext();
 
 function App() {
   const queryClient = new QueryClient({
@@ -16,18 +20,53 @@ function App() {
     },
   });
 
+  const [currentCity, setCurrentCity] = useState("");
+  const [cityName, setCityName] = useState(["تهران"]);
+  const [language, setLanguage] = useState("fa");
+  const [units, setUnits] = useState("metric");
+  const [favorite, setFavorite] = useState(false);
+  const [country, setCountry] = useState(["IR"]);
+
+  function changeHandler(e) {
+    setCurrentCity(e.target.value);
+  }
+
+  function clickHandler() {
+    if (currentCity === "") return;
+    if (cityName.find((item) => item === currentCity)) {
+      return;
+    }
+    setCityName([...cityName, currentCity]);
+  }
+
   return (
-    <>
-      <QueryClientProvider client={queryClient}>
+    <QueryClientProvider client={queryClient}>
+      <ComponentsContext.Provider
+        value={{
+          favorite,
+          setFavorite,
+          cityName,
+          language,
+          units,
+          setUnits,
+          changeHandler,
+          currentCity,
+          clickHandler,
+          country,
+          setCountry,
+        }}
+      >
         <BrowserRouter>
-          <Routes>
-            <Route index element={<HomePage/>}/>
-            <Route path="/favorite" element={<Favorite/>}/>
-            <Route path="*" element={<PageNotFound/>}/>
-          </Routes>
+          <Layout>
+            <Routes>
+              <Route index element={<HomePage />} />
+              <Route path="/favorite" element={<Favorite />} />
+              <Route path="*" element={<PageNotFound />} />
+            </Routes>
+          </Layout>
         </BrowserRouter>
-      </QueryClientProvider>
-    </>
+      </ComponentsContext.Provider>
+    </QueryClientProvider>
   );
 }
 

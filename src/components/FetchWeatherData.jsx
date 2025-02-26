@@ -6,16 +6,14 @@ import { Chart } from "./Chart";
 import DetailWeather from "./DetailWeather";
 import ForcastWeather from "./ForcastWeather";
 import { IoIosRefreshCircle } from "react-icons/io";
-import { ComponentsContext } from "../Pages/HomePage";
+import { ComponentsContext } from "../App";
 import SearchRecently from "./SearchRecently";
 
-function FetchWeatherData() {
-  const { data, cityName, language, units, setUnits, country, setCountry } =
+function FetchWeatherData({data}) {
+  const { cityName, language, units, setUnits, country, setCountry } =
     useContext(ComponentsContext);
 
-  useEffect(() => {
-    setCountry([...country, data[0]["country"]]);
-  }, [cityName]);
+  
   const {
     data: currentData,
     isPending: currentDataPending,
@@ -40,7 +38,7 @@ function FetchWeatherData() {
       ),
   });
 
-  // console.log("current:", currentData);
+  console.log("current:", currentData);
   // console.log("forcast:", weatherForcast);
 
   function refetchHandler() {

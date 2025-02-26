@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { ComponentsContext } from '../Pages/HomePage'
+import { ComponentsContext } from "../App";
 
 function SearchRecently() {
     const {cityName , country} = useContext(ComponentsContext)

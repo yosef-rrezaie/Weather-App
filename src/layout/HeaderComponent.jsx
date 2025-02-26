@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import weatherIcon from "../assets/weather-forecast.png";
 import { CiSearch } from "react-icons/ci";
-import { ComponentsContext } from "../Pages/HomePage";
+import { ComponentsContext } from "../App";
 
 function HeaderComponent() {
   const { changeHandler, currentCity, clickHandler , cityName , setHistory } = useContext(ComponentsContext)
