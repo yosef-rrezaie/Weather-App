@@ -52,9 +52,9 @@ function FetchWeatherData() {
     <>
       {currentDataPending || weatherForcastPending === true ? null : (
         <div>
-          <div className="mx-[43px] mt-[30px]">
+          {/* <div className="mx-[43px] mt-[30px]">
             <SearchRecently />
-          </div>
+          </div> */}
           <div className="flex justify-between mx-[43px] mt-[30px] ">
             <p className="text-[1.3rem] font-extrabold">موقعیت من</p>
             <IoIosRefreshCircle

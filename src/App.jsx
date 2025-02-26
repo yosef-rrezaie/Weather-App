@@ -1,5 +1,8 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import HomePage from "./Pages/HomePage";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import PageNotFound from "./Pages/PageNotFound";
+import Favorite from "./Pages/Favorite";
 
 function App() {
   const queryClient = new QueryClient({
@@ -8,7 +11,7 @@ function App() {
         refetchOnWindowFocus: false,
         refetchOnMount: false,
         staleTime: 60 * 1000,
-        retry : 1
+        retry: 1,
       },
     },
   });
@@ -16,7 +19,13 @@ function App() {
   return (
     <>
       <QueryClientProvider client={queryClient}>
-        <HomePage />
+        <BrowserRouter>
+          <Routes>
+            <Route index element={<HomePage/>}/>
+            <Route path="/favorite" element={<Favorite/>}/>
+            <Route path="*" element={<PageNotFound/>}/>
+          </Routes>
+        </BrowserRouter>
       </QueryClientProvider>
     </>
   );
