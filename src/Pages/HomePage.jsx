@@ -14,6 +14,7 @@ function HomePage() {
   const [language, setLanguage] = useState("fa");
   const [units, setUnits] = useState("metric");
   const [favorite, setFavorite] = useState(false);
+  const [country, setCountry] = useState(["IR"]);
   const { data, isPending, refetch, isError, error } = useQuery({
     queryKey: ["geoLocation", cityName],
     queryFn: () =>
@@ -35,9 +36,10 @@ function HomePage() {
     }
     setCityName([...cityName, currentCity]);
   }
-  console.log("data :", data);
-  console.log("isErorr :", isError);
-  console.log("Erorr :", error);
+  // console.log("data :", data);
+  // console.log("isErorr :", isError);
+  // console.log("Erorr :", error);
+  console.log(country)
 
   return (
     <>
@@ -53,6 +55,8 @@ function HomePage() {
           changeHandler,
           currentCity,
           clickHandler,
+          country , 
+          setCountry
         }}
       >
         <Layout>
