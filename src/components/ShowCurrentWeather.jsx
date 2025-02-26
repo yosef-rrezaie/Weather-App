@@ -1,17 +1,27 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { WiHumidity } from "react-icons/wi";
 import { FaArrowDown, FaArrowUp, FaHeart, FaWind } from "react-icons/fa6";
 import e2p from "../../config/e2p";
 import { CiHeart } from "react-icons/ci";
 import { ComponentsContext } from "../App";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addFavorite, removeFavorite } from "../feautures/favotire";
 // ['coord', 'weather', 'base', 'main', 'visibility', 'wind', 'rain', 'clouds', 'dt', 'sys', 'timezone', 'id', 'name', 'cod']
 function ShowCurrentWeather({ currentData }) {
   const { units, setUnits, favorite, setFavorite } =
     useContext(ComponentsContext);
   const dispatch = useDispatch();
+  const result = useSelector((store) => store.Favorite.favoriteObject);
   console.log("currentDataYosef", currentData);
+
+  useEffect(() => {
+    let isExist = result.find(
+      (item) => item["lon"] === currentData["coord"]["lon"]
+    );
+    if (isExist) {
+      setFavorite(true)
+    }
+  }, []);
 
   function setFavoriteHandler() {
     if (favorite === false) {
