@@ -19,7 +19,11 @@ function ShowCurrentWeather({ currentData }) {
       (item) => item["lon"] === currentData["coord"]["lon"]
     );
     if (isExist) {
-      setFavorite(true)
+      let findIndex = result.findIndex(
+        (item) => item["lon"] === currentData["coord"]["lon"]
+      );
+      setUnits(result[findIndex]["units"]);
+      setFavorite(true);
     }
   }, []);
 
