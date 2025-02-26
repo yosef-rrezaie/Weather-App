@@ -4,12 +4,23 @@ import { FaArrowDown, FaArrowUp, FaHeart, FaWind } from "react-icons/fa6";
 import e2p from "../../config/e2p";
 import { CiHeart } from "react-icons/ci";
 import { ComponentsContext } from "../App";
+import { useDispatch } from "react-redux";
+import { addFavorite } from "../features/favotire";
 // ['coord', 'weather', 'base', 'main', 'visibility', 'wind', 'rain', 'clouds', 'dt', 'sys', 'timezone', 'id', 'name', 'cod']
-function ShowCurrentWeather({ currentData}) {
-  const {units , setUnits , favorite , setFavorite} = useContext(ComponentsContext)
-  console.log(currentData);
+function ShowCurrentWeather({ currentData }) {
+  const { units, setUnits, favorite, setFavorite } =
+    useContext(ComponentsContext);
+  const dispatch = useDispatch();
+  console.log("currentDataYosef", currentData);
 
   function setFavoriteHandler() {
+    dispatch(
+      addFavorite({
+        lon: currentData["coord"]["lon"],
+        lat: currentData["coord"]["lat"],
+        data: currentData,
+      })
+    );
     setFavorite(!favorite);
   }
 

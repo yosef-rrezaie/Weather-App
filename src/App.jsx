@@ -5,11 +5,14 @@ import PageNotFound from "./Pages/PageNotFound";
 import Favorite from "./Pages/Favorite";
 import Layout from "./layout/Layout";
 import { createContext, useState } from "react";
-
+import { useSelector } from "react-redux";
 
 export const ComponentsContext = createContext();
 
 function App() {
+  const addFavorite = useSelector((store) => store.Favorite.favoriteObject);
+  console.log(addFavorite);
+
   const queryClient = new QueryClient({
     defaultOptions: {
       queries: {
@@ -41,34 +44,34 @@ function App() {
   }
 
   return (
-      <QueryClientProvider client={queryClient}>
-        <ComponentsContext.Provider
-          value={{
-            favorite,
-            setFavorite,
-            cityName,
-            setCityName,
-            language,
-            units,
-            setUnits,
-            changeHandler,
-            currentCity,
-            clickHandler,
-            country,
-            setCountry,
-          }}
-        >
-          <BrowserRouter>
-            <Layout>
-              <Routes>
-                <Route path="/" element={<HomePage />} />
-                <Route path="/favorite" element={<Favorite />} />
-                <Route path="*" element={<PageNotFound />} />
-              </Routes>
-            </Layout>
-          </BrowserRouter>
-        </ComponentsContext.Provider>
-      </QueryClientProvider>
+    <QueryClientProvider client={queryClient}>
+      <ComponentsContext.Provider
+        value={{
+          favorite,
+          setFavorite,
+          cityName,
+          setCityName,
+          language,
+          units,
+          setUnits,
+          changeHandler,
+          currentCity,
+          clickHandler,
+          country,
+          setCountry,
+        }}
+      >
+        <BrowserRouter>
+          <Layout>
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/favorite" element={<Favorite />} />
+              <Route path="*" element={<PageNotFound />} />
+            </Routes>
+          </Layout>
+        </BrowserRouter>
+      </ComponentsContext.Provider>
+    </QueryClientProvider>
   );
 }
 
