@@ -8,19 +8,28 @@ import { CiHeart } from "react-icons/ci";
 import { ComponentsContext } from "../App";
 import { ImCross } from "react-icons/im";
 import { removeFavorite } from "../feautures/favotire";
+import { useNavigate } from "react-router-dom";
 function FavoriteCity() {
-  const { units, favorite, setFavoriteHandler } = useContext(ComponentsContext);
+  const { units, cityName, setCityName,} =
+    useContext(ComponentsContext);
   const result = useSelector((store) => store.Favorite.favoriteObject);
-  const dispatch = useDispatch()
-    console.log(result);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  console.log(result);
 
   function removeHandler(e) {
     const value = Number(e.currentTarget.dataset.value);
-    const removeItem = result.filter(item => item["lon"]!== value)
-    console.log(removeItem)
-    dispatch(removeFavorite(value)); 
-
+    const removeItem = result.filter((item) => item["lon"] !== value);
+    console.log(removeItem);
+    dispatch(removeFavorite(value));
   }
+
+  function goToHomePage(e) {
+    setCityName([...cityName, e.target.innerText]);
+    navigate("/");
+  }
+
+  console.log(cityName);
 
   return (
     <div className="grid grid-cols-3 gap-[30px]  px-[43px] mt-[30px] flex-wrap">
@@ -32,7 +41,9 @@ function FavoriteCity() {
         >
           <div className="w-3/5 ">
             <div className="flex justify-between">
-              <p className="font-normal">{item["data"]["name"]}</p>
+              <p className="font-normal cursor-pointer" onClick={goToHomePage}>
+                {item["data"]["name"]}
+              </p>
               <span>{item["data"]["sys"]["country"]}</span>
             </div>
             <div className="p-[24px]">
@@ -118,7 +129,7 @@ function FavoriteCity() {
           <div
             className="text-[15px] text-red-600 h-max cursor-pointer"
             data-value={`${item["lon"]}`}
-            onClick={removeHandler} 
+            onClick={removeHandler}
           >
             <ImCross />
           </div>

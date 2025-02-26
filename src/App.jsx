@@ -59,6 +59,7 @@ function App() {
           clickHandler,
           country,
           setCountry,
+          setCurrentCity
         }}
       >
         <BrowserRouter>
