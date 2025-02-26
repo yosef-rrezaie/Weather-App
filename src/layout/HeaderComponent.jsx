@@ -1,10 +1,12 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import weatherIcon from "../assets/weather-forecast.png";
 import { CiSearch } from "react-icons/ci";
 import { ComponentsContext } from "../Pages/HomePage";
 
 function HeaderComponent() {
-  const { changeHandler, currentCity, clickHandler } = useContext(ComponentsContext)
+  const { changeHandler, currentCity, clickHandler , cityName , setHistory } = useContext(ComponentsContext)
+
+
   return (
     <header className="bg-white h-[100px] flex justify-between items-center px-[43px] shadow-lg 
     sticky top-0 z-10">

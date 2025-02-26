@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { API_KEY, weatherApi } from "../config/api";
 import { useQuery } from "@tanstack/react-query";
 import ShowCurrentWeather from "./ShowCurrentWeather";
@@ -7,10 +7,15 @@ import DetailWeather from "./DetailWeather";
 import ForcastWeather from "./ForcastWeather";
 import { IoIosRefreshCircle } from "react-icons/io";
 import { ComponentsContext } from "../Pages/HomePage";
+import SearchRecently from "./SearchRecently";
 
 function FetchWeatherData() {
-  const { data, cityName, language, units, setUnits } =
+  const { data, cityName, language, units, setUnits, country, setCountry } =
     useContext(ComponentsContext);
+
+  useEffect(() => {
+    setCountry([...country, data[0]["country"]]);
+  }, [cityName]);
   const {
     data: currentData,
     isPending: currentDataPending,
@@ -47,6 +52,9 @@ function FetchWeatherData() {
     <>
       {currentDataPending || weatherForcastPending === true ? null : (
         <div>
+          <div className="mx-[43px] mt-[30px]">
+            <SearchRecently />
+          </div>
           <div className="flex justify-between mx-[43px] mt-[30px] ">
             <p className="text-[1.3rem] font-extrabold">موقعیت من</p>
             <IoIosRefreshCircle
