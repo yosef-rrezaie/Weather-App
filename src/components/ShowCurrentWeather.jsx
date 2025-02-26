@@ -5,7 +5,7 @@ import e2p from "../../config/e2p";
 import { CiHeart } from "react-icons/ci";
 import { ComponentsContext } from "../App";
 import { useDispatch } from "react-redux";
-import { addFavorite } from "../feautures/favotire";
+import { addFavorite, removeFavorite } from "../feautures/favotire";
 // ['coord', 'weather', 'base', 'main', 'visibility', 'wind', 'rain', 'clouds', 'dt', 'sys', 'timezone', 'id', 'name', 'cod']
 function ShowCurrentWeather({ currentData }) {
   const { units, setUnits, favorite, setFavorite } =
@@ -14,15 +14,20 @@ function ShowCurrentWeather({ currentData }) {
   console.log("currentDataYosef", currentData);
 
   function setFavoriteHandler() {
-    dispatch(
-      addFavorite({
-        lon: currentData["coord"]["lon"],
-        lat: currentData["coord"]["lat"],
-        data: currentData,
-        units : units
-      })
-    );
-    setFavorite(!favorite);
+    if (favorite === false) {
+      dispatch(
+        addFavorite({
+          lon: currentData["coord"]["lon"],
+          lat: currentData["coord"]["lat"],
+          data: currentData,
+          units: units,
+        })
+      );
+      setFavorite(!favorite);
+    } else {
+      dispatch(removeFavorite(currentData["coord"]["lon"]));
+      setFavorite(!favorite);
+    }
   }
 
   const setUnitsHandler = (e) => {

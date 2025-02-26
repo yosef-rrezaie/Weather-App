@@ -10,7 +10,7 @@ import { ImCross } from "react-icons/im";
 import { removeFavorite } from "../feautures/favotire";
 import { useNavigate } from "react-router-dom";
 function FavoriteCity() {
-  const { units, cityName, setCityName,} =
+  const { units, cityName, setCityName, setFavorite } =
     useContext(ComponentsContext);
   const result = useSelector((store) => store.Favorite.favoriteObject);
   const dispatch = useDispatch();
