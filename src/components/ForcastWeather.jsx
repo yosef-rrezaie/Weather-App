@@ -48,7 +48,7 @@ function ForcastWeather({ weatherForcast }) {
           key={item.index}
           className={`flex justify-around
             items-center rounded-[7px]  p-[10px] border-[.5px] border-solid border-gray-100 
-            shadow-sm ${dark && "border-[#212020]"}  `}
+            shadow-sm ${dark && "border-[#252424]"}  `}
         >
           <p className="w-3/4">
             {moment.unix(item["stamp"]).format("dddd") === "آدینه"
@@ -63,11 +63,11 @@ function ForcastWeather({ weatherForcast }) {
               <p dir="ltr" className="">
                 {e2p(item["min"])}
               </p>
-              <FaArrowDown className="text-blue-800" />
+              <FaArrowDown className={`text-blue-800 ${dark && "text-blue"}`} />
             </div>
             <div className="flex">
               °<p dir="ltr">{e2p(item["max"])}</p>
-              <FaArrowUp className="text-red-800" />
+              <FaArrowUp className={`text-red-800 ${dark && "text-red"}`} />
             </div>
           </div>
         </div>
