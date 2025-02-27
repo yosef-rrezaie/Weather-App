@@ -7,17 +7,18 @@ import { removeserachRecently } from "../feautures/serachRecently";
 import { toast } from "react-toastify";
 
 function SearchRecently() {
-  const {setCityName , cityName} = useContext(ComponentsContext)
+  const { setCityName, cityName } = useContext(ComponentsContext);
   const dispatch = useDispatch();
   const result = useSelector(
     (store) => store.SearchRecently.searchRecentlyObject
   );
-  console.log(result)
+  console.log(result);
+  console.log("p:", result[result.length - 1]);
 
   function removeHandler(e) {
     const value = Number(e.currentTarget.dataset.value);
-    if(result.length===1) {
-      toast.success(" حداقل یک شهر باید در لیست جست و جو باشد !" ,{
+    if (result.length === 1) {
+      toast.success(" حداقل یک شهر باید در لیست جست و جو باشد !", {
         className: "text-[12px] font-bold text-green-700",
         style: {
           background: "#e0f2f1",
@@ -26,7 +27,20 @@ function SearchRecently() {
           fontFamily: "Vazir",
         },
       });
-      return ;
+      return;
+    }
+
+    if (value == result[result.length - 1]["lon"]) {
+      toast.success("موقعیت کنونی را نمی توان حذف کرد !", {
+        className: "text-[12px] font-bold text-green-700",
+        style: {
+          background: "#e0f2f1",
+          color: "#004d40",
+          borderRadius: "10px",
+          fontFamily: "Vazir",
+        },
+      });
+      return;
     }
     dispatch(removeserachRecently(value));
     toast.success("شهر مورد نظر از لیست جست و جو حذف شد !", {
@@ -42,7 +56,6 @@ function SearchRecently() {
 
   function searchAgain(e) {
     setCityName([...cityName, e.target.innerText]);
-
   }
 
   return (
@@ -54,7 +67,9 @@ function SearchRecently() {
           justify-between items-center"
         >
           <div className="flex flex-col justify-between mx-[10px] gap-y-2 items-center">
-            <p className="text-[17px] cursor-pointer" onClick={searchAgain}>{item["data"]["name"]}</p>
+            <p className="text-[17px] cursor-pointer" onClick={searchAgain}>
+              {item["data"]["name"]}
+            </p>
             <p className="font-thin">{item["data"]["sys"]["country"]}</p>
           </div>
           <div className="flex flex-col items-center">
