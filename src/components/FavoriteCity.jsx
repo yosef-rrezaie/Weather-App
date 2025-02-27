@@ -10,7 +10,7 @@ import { ImCross } from "react-icons/im";
 import { removeFavorite } from "../feautures/favotire";
 import { useNavigate } from "react-router-dom";
 function FavoriteCity() {
-  const { units, cityName, setCityName, setFavorite } =
+  const { units, cityName, setCityName, setFavorite, dark } =
     useContext(ComponentsContext);
   const result = useSelector((store) => store.Favorite.favoriteObject);
   const dispatch = useDispatch();
@@ -36,8 +36,8 @@ function FavoriteCity() {
       {result.map((item) => (
         <div
           key={item["lon"]}
-          className="flex bg-white rounded-[9px] shadow p-[25px] flex-grow border border-solid
-         border-gray-200"
+          className={`flex bg-white rounded-[9px] shadow p-[25px] flex-grow border border-solid
+         border-gray-200 ${dark && "darkmood-bg darkmood-border"}`}
         >
           <div className="w-3/5 ">
             <div className="flex justify-between">
