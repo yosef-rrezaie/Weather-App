@@ -12,6 +12,7 @@ import Loading from "./Loading";
 import { IoReload } from "react-icons/io5";
 
 function FetchWeatherData({ data }) {
+  console.log(data.lon)
   const {
     cityName,
     language,
