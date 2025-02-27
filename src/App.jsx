@@ -1,6 +1,6 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import HomePage from "./Pages/HomePage";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import PageNotFound from "./Pages/PageNotFound";
 import Favorite from "./Pages/Favorite";
 import Layout from "./layout/Layout";
@@ -48,12 +48,12 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <ToastContainer
-        position="bottom-right" 
-        autoClose={500} 
-        hideProgressBar="true" 
-        newestOnTop={false} 
+        position="bottom-right"
+        autoClose={500}
+        hideProgressBar="true"
+        newestOnTop={false}
         // closeOnClick
-        rtl={true} 
+        rtl={true}
         theme="light"
       />
       <ComponentsContext.Provider
@@ -73,13 +73,16 @@ function App() {
           setCurrentCity,
         }}
       >
-        <BrowserRouter future={{
-    v7_relativeSplatPath: true,
-  }}>
+        <BrowserRouter
+          future={{
+            v7_relativeSplatPath: true,
+          }}
+        >
           <Layout>
             <Routes>
-              <Route path="/" element={<HomePage />} />
-              <Route path="/favorite" element={<Favorite />} />
+              <Route path="/" element={<Navigate to="/Homepage" />} />{" "}
+              <Route path="/Homepage" element={<HomePage />} />
+              <Route path="/Favorite" element={<Favorite />} />
               <Route path="/*" element={<PageNotFound />} />
             </Routes>
           </Layout>
