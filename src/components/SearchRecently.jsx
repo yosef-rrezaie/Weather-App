@@ -8,7 +8,7 @@ import { toast } from "react-toastify";
 import toastCreate from "../../config/toastCreate";
 
 function SearchRecently() {
-  const { setCityName, cityName , dark } = useContext(ComponentsContext);
+  const { setCityName, cityName, dark } = useContext(ComponentsContext);
   const dispatch = useDispatch();
   const result = useSelector(
     (store) => store.SearchRecently.searchRecentlyObject
@@ -17,17 +17,20 @@ function SearchRecently() {
   console.log("p:", result[result.length - 1]);
 
   function removeHandler(e) {
-    const value = Number(e.currentTarget.dataset.value);
+    const value = e.currentTarget.dataset.value;
+    
     if (result.length === 1) {
       toastCreate("حداقل یک شهر باید در لیست جست و جو باشد !");
       return;
     }
 
-    if (value == result[result.length - 1]["lon"]) {
+    // جلوگیری از حذف شهر جاری
+    if (value === result[result.length - 1]["data"]["name"]) {
       toastCreate("موقعیت کنونی را نمی توان حذف کرد !");
       return;
     }
-    dispatch(removeserachRecently(value));
+
+    dispatch(removeserachRecently(value)); 
     toastCreate("شهر مورد نظر از لیست جست و جو حذف شد !");
   }
 
@@ -60,7 +63,7 @@ function SearchRecently() {
 
           <ImCross
             className="absolute top-[10px] left-[10px] text-[10px] text-red-500"
-            data-value={`${item["lon"]}`}
+            data-value={item["data"]["name"]} // مقایسه و حذف بر اساس نام
             onClick={removeHandler}
           />
         </div>
