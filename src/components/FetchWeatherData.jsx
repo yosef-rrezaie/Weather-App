@@ -9,6 +9,7 @@ import { IoIosRefreshCircle } from "react-icons/io";
 import { ComponentsContext } from "../App";
 import SearchRecently from "./SearchRecently";
 import Loading from "./Loading";
+import { IoReload } from "react-icons/io5";
 
 function FetchWeatherData({ data }) {
   const {
@@ -20,7 +21,7 @@ function FetchWeatherData({ data }) {
     setCountry,
     favorite,
     setFavorite,
-    dark
+    dark,
   } = useContext(ComponentsContext);
 
   useEffect(() => {
@@ -69,12 +70,17 @@ function FetchWeatherData({ data }) {
             <p className="font-extrabold">جست و جو های اخیر</p>
             <SearchRecently />
           </div>
-          <div className="flex justify-between mx-[43px] mt-[30px] ">
+          <div className="flex justify-between mx-[43px] mt-[30px] items-center ">
             <p className="text-[1.3rem] font-extrabold">موقعیت من</p>
-            <IoIosRefreshCircle
+            <div className="rounded-[3px]">
+              <IoReload
+                className={` bg-white w-[29px] h-[29px] p-[5px] text-[2rem] rounded-[8px] ${dark && "darkmood-bg"}`}
+              />
+            </div>
+            {/* <IoIosRefreshCircle
               className={`text-blue-300 text-[2rem] ${dark && "text-white "} `}
               onClick={refetchHandler}
-            />
+            /> */}
           </div>
           <div className="grid grid-cols-2 gap-5 mx-[43px] mb-[43px] mt-[25px]  min-h-[300px]">
             <ShowCurrentWeather currentData={currentData} />
