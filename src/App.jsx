@@ -73,12 +73,14 @@ function App() {
           setCurrentCity,
         }}
       >
-        <BrowserRouter>
+        <BrowserRouter future={{
+    v7_relativeSplatPath: true,
+  }}>
           <Layout>
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/favorite" element={<Favorite />} />
-              <Route path="*" element={<PageNotFound />} />
+              <Route path="/*" element={<PageNotFound />} />
             </Routes>
           </Layout>
         </BrowserRouter>

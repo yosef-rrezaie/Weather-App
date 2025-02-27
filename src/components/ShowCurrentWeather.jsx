@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addFavorite, removeFavorite } from "../feautures/favotire";
 import { addserachRecently } from "../feautures/serachRecently";
 import { toast } from "react-toastify";
+import toastCreate from "../../config/toastCreate";
 // ['coord', 'weather', 'base', 'main', 'visibility', 'wind', 'rain', 'clouds', 'dt', 'sys', 'timezone', 'id', 'name', 'cod']
 function ShowCurrentWeather({ currentData }) {
   const { units, setUnits, favorite, setFavorite } =
@@ -63,27 +64,11 @@ function ShowCurrentWeather({ currentData }) {
         })
       );
       setFavorite(!favorite);
-      toast.success("شهر مورد نظر دخیره شد !", {
-        className: "text-[12px] font-bold text-green-700",
-        style: {
-          background: "#e0f2f1",
-          color: "#004d40",
-          borderRadius: "10px",
-          fontFamily: "Vazir",
-        },
-      });
+      toastCreate("شهر مورد نظر ذخیره شد !");
     } else {
       dispatch(removeFavorite(currentData["coord"]["lon"]));
       setFavorite(!favorite);
-      toast.success("شهر مورد نظر از لیست مورد علاقه حذف شد !", {
-        className: "text-[12px] font-bold text-green-700",
-        style: {
-          background: "#e0f2f1",
-          color: "#004d40",
-          borderRadius: "10px",
-          fontFamily: "Vazir",
-        },
-      });
+      toastCreate("شهر مورد نظر از لیست مورد علاقه حذف شد !");
     }
   }
 

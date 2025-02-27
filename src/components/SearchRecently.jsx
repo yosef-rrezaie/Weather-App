@@ -5,6 +5,7 @@ import { ImCross } from "react-icons/im";
 import e2p from "../../config/e2p";
 import { removeserachRecently } from "../feautures/serachRecently";
 import { toast } from "react-toastify";
+import toastCreate from "../../config/toastCreate";
 
 function SearchRecently() {
   const { setCityName, cityName } = useContext(ComponentsContext);
@@ -18,40 +19,16 @@ function SearchRecently() {
   function removeHandler(e) {
     const value = Number(e.currentTarget.dataset.value);
     if (result.length === 1) {
-      toast.success(" حداقل یک شهر باید در لیست جست و جو باشد !", {
-        className: "text-[12px] font-bold text-green-700",
-        style: {
-          background: "#e0f2f1",
-          color: "#004d40",
-          borderRadius: "10px",
-          fontFamily: "Vazir",
-        },
-      });
+      toastCreate("حداقل یک شهر باید در لیست جست و جو باشد !");
       return;
     }
 
     if (value == result[result.length - 1]["lon"]) {
-      toast.success("موقعیت کنونی را نمی توان حذف کرد !", {
-        className: "text-[12px] font-bold text-green-700",
-        style: {
-          background: "#e0f2f1",
-          color: "#004d40",
-          borderRadius: "10px",
-          fontFamily: "Vazir",
-        },
-      });
+      toastCreate("موقعیت کنونی را نمی توان حذف کرد !");
       return;
     }
     dispatch(removeserachRecently(value));
-    toast.success("شهر مورد نظر از لیست جست و جو حذف شد !", {
-      className: "text-[12px] font-bold text-green-700",
-      style: {
-        background: "#e0f2f1",
-        color: "#004d40",
-        borderRadius: "10px",
-        fontFamily: "Vazir",
-      },
-    });
+    toastCreate("شهر مورد نظر از لیست جست و جو حذف شد !");
   }
 
   function searchAgain(e) {
