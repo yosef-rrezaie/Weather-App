@@ -6,20 +6,20 @@ import { NavLink } from "react-router-dom";
 import { IoMdSave } from "react-icons/io";
 
 function HeaderComponent() {
-  const { changeHandler, currentCity, clickHandler, cityName, setHistory } =
+  const { changeHandler, currentCity, clickHandler, cityName, setHistory , dark } =
     useContext(ComponentsContext);
 
   return (
     <header
-      className="bg-white h-[100px] flex justify-between items-center px-[43px] shadow-lg 
-    sticky top-0 z-10"
+      className={`bg-white h-[100px] flex justify-between items-center px-[43px] shadow-lg 
+    sticky top-0 z-10 ${dark && "darkmood-bg text-white"} `}
     >
       <div className="relative">
         <input
           type="text"
           placeholder="جست و جوی شهر ..."
-          className="placeholder:text-[11px] focus:outline-none border-[2px] border-solid shadow-sm border-gray-200 
-          rounded-[5px] p-[8px] w-[270px]"
+          className={`placeholder:text-[11px] focus:outline-none border-[2px] border-solid shadow-sm border-gray-200 
+          rounded-[5px] p-[8px] w-[270px] ${dark && "darkmood-home darkmood-border placeholder:font-extrabold"}`}
           onChange={changeHandler}
           value={currentCity}
         />

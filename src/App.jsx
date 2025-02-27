@@ -32,6 +32,7 @@ function App() {
   const [units, setUnits] = useState("metric");
   const [favorite, setFavorite] = useState(false);
   const [country, setCountry] = useState(["IR"]);
+  const [dark , setDark] = useState(true)
 
   function changeHandler(e) {
     setCurrentCity(e.target.value);
@@ -71,6 +72,8 @@ function App() {
           country,
           setCountry,
           setCurrentCity,
+          dark , 
+          setDark
         }}
       >
         <BrowserRouter

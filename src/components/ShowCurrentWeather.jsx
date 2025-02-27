@@ -11,7 +11,7 @@ import { toast } from "react-toastify";
 import toastCreate from "../../config/toastCreate";
 // ['coord', 'weather', 'base', 'main', 'visibility', 'wind', 'rain', 'clouds', 'dt', 'sys', 'timezone', 'id', 'name', 'cod']
 function ShowCurrentWeather({ currentData }) {
-  const { units, setUnits, favorite, setFavorite } =
+  const { units, setUnits, favorite, setFavorite , dark , setDark } =
     useContext(ComponentsContext);
   const dispatch = useDispatch();
   const result = useSelector((store) => store.Favorite.favoriteObject);
@@ -83,7 +83,8 @@ function ShowCurrentWeather({ currentData }) {
 
   const image = currentData["weather"][0]["icon"];
   return (
-    <div className="flex bg-white rounded-[9px] shadow p-[25px] flex-grow border border-solid border-gray-200">
+    <div className={`flex bg-white rounded-[9px] shadow p-[25px] flex-grow border 
+    border-solid border-gray-200 ${dark && "darkmood-bg darkmood-border"} `}>
       <div className="w-3/5 ">
         <div className="flex justify-between">
           <p className="font-normal">{currentData["name"]}</p>
@@ -151,7 +152,7 @@ function ShowCurrentWeather({ currentData }) {
           <button
             onClick={setUnitsHandler}
             value="Imperial"
-            className={`rounded-[7px]  p-[10px] border-[.5px] border-solid border-blue-400 shadow-lg ${
+            className={`rounded-[7px]  p-[10px] border-[.5px] border-solid border-blue-400 shadow-lg transition-shadow ${
               units === "imperial" ? "bg-blue-500 text-white" : null
             } `}
           >
