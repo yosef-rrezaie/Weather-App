@@ -37,14 +37,19 @@ function ShowCurrentWeather({ currentData }) {
 
   useEffect(() => {
     // serachRecently
-    dispatch2(
-      addserachRecently({
-        lon: currentData["coord"]["lon"],
-        lat: currentData["coord"]["lat"],
-        data: currentData,
-        units: units,
-      })
+    let isExist = recentSearch.find(
+      (item) => item["lon"] === currentData["coord"]["lon"]
     );
+    if (!isExist) {
+      dispatch2(
+        addserachRecently({
+          lon: currentData["coord"]["lon"],
+          lat: currentData["coord"]["lat"],
+          data: currentData,
+          units: units,
+        })
+      );
+    }
   }, []);
 
   function setFavoriteHandler() {
