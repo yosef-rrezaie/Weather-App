@@ -63,7 +63,7 @@ function ShowCurrentWeather({ currentData }) {
         })
       );
       setFavorite(!favorite);
-      toast.success("شهر مورد نظر دخیره شد", {
+      toast.success("شهر مورد نظر دخیره شد !", {
         className: "text-[12px] font-bold text-green-700",
         style: {
           background: "#e0f2f1",
@@ -75,7 +75,7 @@ function ShowCurrentWeather({ currentData }) {
     } else {
       dispatch(removeFavorite(currentData["coord"]["lon"]));
       setFavorite(!favorite);
-      toast.success("شهر مورد نظر از لیست مورد علاقه حذف شد", {
+      toast.success("شهر مورد نظر از لیست مورد علاقه حذف شد !", {
         className: "text-[12px] font-bold text-green-700",
         style: {
           background: "#e0f2f1",
