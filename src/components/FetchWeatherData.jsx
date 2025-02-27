@@ -10,14 +10,22 @@ import { ComponentsContext } from "../App";
 import SearchRecently from "./SearchRecently";
 import Loading from "./Loading";
 
-function FetchWeatherData({data}) {
-  const { cityName, language, units, setUnits, country, setCountry , favorite , setFavorite} =
-    useContext(ComponentsContext);
+function FetchWeatherData({ data }) {
+  const {
+    cityName,
+    language,
+    units,
+    setUnits,
+    country,
+    setCountry,
+    favorite,
+    setFavorite,
+  } = useContext(ComponentsContext);
 
-    useEffect(()=> {
-      setFavorite(false)
-    } , [])
-  
+  useEffect(() => {
+    setFavorite(false);
+  }, []);
+
   const {
     data: currentData,
     isPending: currentDataPending,
@@ -52,11 +60,14 @@ function FetchWeatherData({data}) {
 
   return (
     <>
-      {currentDataPending || weatherForcastPending === true ? <Loading/> : (
+      {currentDataPending || weatherForcastPending === true ? (
+        <Loading />
+      ) : (
         <div>
-          {/* <div className="mx-[43px] mt-[30px]">
+          <div className="mx-[43px] mt-[30px]">
+            <p className="font-extrabold">جست و جو های اخیر</p>
             <SearchRecently />
-          </div> */}
+          </div>
           <div className="flex justify-between mx-[43px] mt-[30px] ">
             <p className="text-[1.3rem] font-extrabold">موقعیت من</p>
             <IoIosRefreshCircle

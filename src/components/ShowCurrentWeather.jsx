@@ -6,15 +6,22 @@ import { CiHeart } from "react-icons/ci";
 import { ComponentsContext } from "../App";
 import { useDispatch, useSelector } from "react-redux";
 import { addFavorite, removeFavorite } from "../feautures/favotire";
+import { addserachRecently } from "../feautures/serachRecently";
 // ['coord', 'weather', 'base', 'main', 'visibility', 'wind', 'rain', 'clouds', 'dt', 'sys', 'timezone', 'id', 'name', 'cod']
 function ShowCurrentWeather({ currentData }) {
   const { units, setUnits, favorite, setFavorite } =
     useContext(ComponentsContext);
   const dispatch = useDispatch();
   const result = useSelector((store) => store.Favorite.favoriteObject);
+  const recentSearch = useSelector(
+    (store) => store.SearchRecently.searchRecentlyObject
+  );
+  const dispatch2 = useDispatch();
+  console.log(recentSearch);
   console.log("currentDataYosef", currentData);
 
   useEffect(() => {
+    // favorite
     let isExist = result.find(
       (item) => item["lon"] === currentData["coord"]["lon"]
     );
@@ -25,6 +32,18 @@ function ShowCurrentWeather({ currentData }) {
       setUnits(result[findIndex]["units"]);
       setFavorite(true);
     }
+  }, []);
+
+  useEffect(() => {
+    // serachRecently
+    dispatch2(
+      addserachRecently({
+        lon: currentData["coord"]["lon"],
+        lat: currentData["coord"]["lat"],
+        data: currentData,
+        units: units,
+      })
+    );
   }, []);
 
   function setFavoriteHandler() {
