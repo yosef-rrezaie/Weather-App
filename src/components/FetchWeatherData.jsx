@@ -64,7 +64,7 @@ function FetchWeatherData({ data }) {
         <Loading />
       ) : (
         <div>
-          <div className="mx-[43px] mt-[30px]">
+          <div className="mx-[43px] mt-[42px]">
             <p className="font-extrabold">جست و جو های اخیر</p>
             <SearchRecently />
           </div>
