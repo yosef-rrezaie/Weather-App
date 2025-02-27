@@ -12,6 +12,9 @@ const searchRecentlySlice = createSlice({
       state.searchRecentlyObject.push(action.payload);
     },
     removeserachRecently: (state, action) => {
+      if (state.searchRecentlyObject.length <= 1) {
+        return;
+      }
       state.searchRecentlyObject = state.searchRecentlyObject.filter(
         (item) => item.lon !== action.payload
       );
@@ -20,4 +23,5 @@ const searchRecentlySlice = createSlice({
 });
 
 export default searchRecentlySlice.reducer;
-export const { addserachRecently , removeserachRecently } = searchRecentlySlice.actions;
+export const { addserachRecently, removeserachRecently } =
+  searchRecentlySlice.actions;
