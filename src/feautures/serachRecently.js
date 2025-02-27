@@ -9,10 +9,10 @@ const searchRecentlySlice = createSlice({
   initialState,
   reducers: {
     addserachRecently: (state, action) => {
-      state.favoriteObject.push(action.payload);
+      state.searchRecentlyObject.push(action.payload);
     },
     removeserachRecently: (state, action) => {
-      state.favoriteObject = state.favoriteObject.filter(
+      state.searchRecentlyObject = state.searchRecentlyObject.filter(
         (item) => item.lon !== action.payload
       );
     },
