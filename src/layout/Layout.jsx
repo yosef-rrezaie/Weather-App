@@ -3,11 +3,13 @@ import HeaderComponent from "./HeaderComponent";
 import { ComponentsContext } from "../App";
 
 function Layout({ children }) {
-  const {dark , setDark} = useContext(ComponentsContext)
+  const { dark, setDark } = useContext(ComponentsContext);
   return (
-    <div className={`bg-[#f1f0f0] h-[100vh] ${dark && "darkmood-home text-white"}`}>
+    <div
+      className={`bg-[#f1f0f0] min-h-[100vh] ${dark && "darkmood-home text-white"}`}
+    >
       <HeaderComponent />
-      {children}
+      <main className="">{children}</main>
     </div>
   );
 }
