@@ -12,11 +12,24 @@ function SearchRecently() {
   const result = useSelector(
     (store) => store.SearchRecently.searchRecentlyObject
   );
+  console.log(result)
 
   function removeHandler(e) {
     const value = Number(e.currentTarget.dataset.value);
+    if(result.length===1) {
+      toast.success(" حداقل یک شهر باید در لیست جست و جو باشد !" ,{
+        className: "text-[12px] font-bold text-green-700",
+        style: {
+          background: "#e0f2f1",
+          color: "#004d40",
+          borderRadius: "10px",
+          fontFamily: "Vazir",
+        },
+      });
+      return ;
+    }
     dispatch(removeserachRecently(value));
-    toast.success("شهر مورد نظر از لیست جست و جو حذف شد", {
+    toast.success("شهر مورد نظر از لیست جست و جو حذف شد !", {
       className: "text-[12px] font-bold text-green-700",
       style: {
         background: "#e0f2f1",

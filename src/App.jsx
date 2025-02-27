@@ -49,7 +49,7 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <ToastContainer
         position="bottom-right" 
-        autoClose={1800} 
+        autoClose={500} 
         hideProgressBar="true" 
         newestOnTop={false} 
         // closeOnClick
