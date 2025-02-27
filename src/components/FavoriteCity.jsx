@@ -53,12 +53,20 @@ function FavoriteCity() {
               </p>
               <div>
                 <div dir="ltr" className="flex justify-evenly items-center">
-                  <p className="flex text-blue-800 text-[1.3rem]">
+                  <p
+                    className={`flex text-blue-800 text-[1.3rem] ${
+                      dark && "text-blue"
+                    }`}
+                  >
                     <FaArrowDown className="" />
                     {e2p(Math.floor(item["data"]["main"]["temp_min"]))}
                     <span>°</span>
                   </p>
-                  <p className="flex text-red-800 text-[1.3rem]">
+                  <p
+                    className={`flex text-red-800 text-[1.3rem] ${
+                      dark && "text-red"
+                    }`}
+                  >
                     <FaArrowUp />
                     {e2p(Math.floor(item["data"]["main"]["temp_max"]))}
                     <span>°</span>
@@ -69,7 +77,11 @@ function FavoriteCity() {
             <div className="flex justify-between mt-[30px]">
               <div className="flex items-center">
                 <span>
-                  <WiHumidity className="text-[1.7rem] text-blue-800" />
+                  <WiHumidity
+                    className={`text-[1.7rem] text-blue-800 ${
+                      dark && "text-blue"
+                    }`}
+                  />
                 </span>
                 <div className="flex flex-col pr-[10px] gap-y-2">
                   <p className="">رطوبت</p>
@@ -81,7 +93,11 @@ function FavoriteCity() {
               </div>
               <div className="flex items-center">
                 <span>
-                  <FaWind className="text-[1.3rem] text-blue-800" />
+                  <FaWind
+                    className={`text-[1.3rem] text-blue-800 ${
+                      dark && "text-blue"
+                    }`}
+                  />
                 </span>
                 <div className="flex flex-col pr-[10px] gap-y-2">
                   <p>سرعت باد</p>
@@ -95,7 +111,11 @@ function FavoriteCity() {
                 </div>
               </div>
             </div>
-            <div className="mt-[30px] pr-[10px] gap-5 flex text-[.7rem] text-blue-400 ">
+            <div
+              className={`mt-[30px] pr-[10px] gap-5 flex text-[.7rem] text-blue-400 ${
+                dark && "text-blue"
+              }`}
+            >
               {/* <button
                 onClick={setUnitsHandler}
                 className={`rounded-[7px]  p-[10px] border-[.5px] border-solid border-blue-400 shadow-lg ${
