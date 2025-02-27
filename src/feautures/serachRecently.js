@@ -9,11 +9,17 @@ const searchRecentlySlice = createSlice({
   initialState,
   reducers: {
     addserachRecently: (state, action) => {
-      state.searchRecentlyObject.push(action.payload);
+      let isExist = state.searchRecentlyObject.some(
+        (item) => item.data.name === action.payload.data.name
+      );
+
+      if (!isExist) {
+        state.searchRecentlyObject.push(action.payload);
+      }
     },
     removeserachRecently: (state, action) => {
       state.searchRecentlyObject = state.searchRecentlyObject.filter(
-        (item) => item.lon !== action.payload
+        (item) => item.data.name !== action.payload
       );
     },
   },
