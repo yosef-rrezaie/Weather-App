@@ -35,7 +35,7 @@ function DetailWeather({ currentData }) {
           <div className="flex justify-between mt-[30px]">
             <div className="flex items-center">
               <span>
-                <BsFillSunsetFill className="text-[1.7rem] text-blue-600" />
+                <BsFillSunsetFill className={`text-[1.7rem] text-blue-600 ${dark && "text-blue"}`} />
               </span>
               <div className="flex flex-col pr-[10px] gap-y-2">
                 <p className="">غروب</p>
