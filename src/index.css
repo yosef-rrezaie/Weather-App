@@ -37,3 +37,11 @@ body {
 .darkmood-border {
   border-color: #2b2828;
 }
+
+.text-red {
+  color : #bd3080
+}
+
+.text-blue {
+  color: #00ADB5;
+}

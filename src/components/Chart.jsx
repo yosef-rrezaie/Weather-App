@@ -13,7 +13,7 @@ import e2p from "../../config/e2p";
 import { ComponentsContext } from "../App";
 
 function Chart({ weatherForcast }) {
-  const { dark } = useContext(ComponentsContext);  // دسترسی به حالت دارک
+  const { dark } = useContext(ComponentsContext); // دسترسی به حالت دارک
   let data = [];
 
   for (let i = 0; i < 8; i++) {
@@ -31,7 +31,7 @@ function Chart({ weatherForcast }) {
 
   const chartStyles = dark
     ? {
-        chart: { backgroundColor: "#171616", borderColor: "#444" },
+        chart: { backgroundColor: "#171616", borderColor: "#2b2828" },
         textColor: "white",
         gridColor: "#555",
         lineColor: "#3A80BA",
@@ -39,7 +39,7 @@ function Chart({ weatherForcast }) {
         tooltipBgColor: "#444",
       }
     : {
-        chart: { backgroundColor: "#fff", borderColor: "#ddd" },
+        chart: { backgroundColor: "#fff",borderColor: "#ddd" },
         textColor: "#333",
         gridColor: "#ddd",
         lineColor: "#3A80BA",
@@ -49,15 +49,21 @@ function Chart({ weatherForcast }) {
 
   return (
     <div
-      className={`bg-white shadow rounded-[9px] p-[25px] flex-grow border border-solid border-gray-200 ${
-        dark && "darkmood-bg darkmood-border"
+      className={`bg-white shadow rounded-[9px] p-[25px] flex-grow border border-solid border-gray-200
       }`}
       style={chartStyles.chart}
     >
-      <h2 className={`text-xl font-semibold mb-4`} style={{ color: chartStyles.textColor }}>
+      <h2
+        className={`text-xl font-semibold mb-4`}
+        style={{ color: chartStyles.textColor }}
+      >
         نمودار دما
       </h2>
-      <ResponsiveContainer width="100%" height={300}>
+      <ResponsiveContainer
+        width="100%"
+        height={300}
+        className={`${dark && "darkmood-border"}`}
+      >
         <LineChart
           data={data}
           margin={{ top: 20, right: 30, left: 40, bottom: 40 }}
@@ -71,14 +77,21 @@ function Chart({ weatherForcast }) {
           />
           <YAxis
             tickFormatter={(value) => e2p(`${value}°C`)}
-            tick={{ fontSize: 14, direction: "ltr", fill: chartStyles.tickColor }}
+            tick={{
+              fontSize: 14,
+              direction: "ltr",
+              fill: chartStyles.tickColor,
+            }}
             dx={-15}
           />
-          <Tooltip formatter={(value) => `${value}°C`} contentStyle={{ backgroundColor: chartStyles.tooltipBgColor }} />
+          <Tooltip
+            formatter={(value) => `${value}°C`}
+            contentStyle={{ backgroundColor: chartStyles.tooltipBgColor }}
+          />
           <Line
             type="monotone"
             dataKey="دما"
-            stroke={chartStyles.lineColor} 
+            stroke={chartStyles.lineColor}
             strokeWidth={3}
             dot={{ r: 1 }}
           />

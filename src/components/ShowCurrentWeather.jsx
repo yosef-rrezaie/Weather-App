@@ -97,12 +97,12 @@ function ShowCurrentWeather({ currentData }) {
           </p>
           <div>
             <div dir="ltr" className="flex justify-evenly items-center">
-              <p className="flex text-blue-800 text-[1.3rem]">
+              <p className={`flex text-blue-800 text-[1.3rem] ${dark && "text-blue"}`}>
                 <FaArrowDown className="" />
                 {e2p(Math.floor(currentData["main"]["temp_min"]))}
                 <span>°</span>
               </p>
-              <p className="flex text-red-800 text-[1.3rem]">
+              <p className={`flex text-red-800 text-[1.3rem] ${dark && "text-red"}`}>
                 <FaArrowUp />
                 {e2p(Math.floor(currentData["main"]["temp_max"]))}
                 <span>°</span>
@@ -113,7 +113,7 @@ function ShowCurrentWeather({ currentData }) {
         <div className="flex justify-between mt-[30px]">
           <div className="flex items-center">
             <span>
-              <WiHumidity className="text-[1.7rem] text-blue-800" />
+              <WiHumidity className={`text-[1.7rem] text-blue-800 ${dark && "text-blue"}`} />
             </span>
             <div className="flex flex-col pr-[10px] gap-y-2">
               <p className="">رطوبت</p>
@@ -125,7 +125,7 @@ function ShowCurrentWeather({ currentData }) {
           </div>
           <div className="flex items-center">
             <span>
-              <FaWind className="text-[1.3rem] text-blue-800" />
+              <FaWind className={`text-[1.3rem] text-blue-800 ${dark && "text-blue"}`} />
             </span>
             <div className="flex flex-col pr-[10px] gap-y-2">
               <p>سرعت باد</p>
@@ -144,7 +144,7 @@ function ShowCurrentWeather({ currentData }) {
             className={`rounded-[7px]  p-[10px] border-[.5px] border-solid border-blue-400 shadow-lg ${
               units === "metric" ? "bg-blue-500 text-white" : null
             }
-            }`}
+            } ${dark && units==="metric" && "border-[#00ADB5] bg-[#19797d]"}`}
             value="metric"
           >
             سلسیوس
@@ -154,7 +154,7 @@ function ShowCurrentWeather({ currentData }) {
             value="Imperial"
             className={`rounded-[7px]  p-[10px] border-[.5px] border-solid border-blue-400 shadow-lg transition-shadow ${
               units === "imperial" ? "bg-blue-500 text-white" : null
-            } `}
+            } ${dark && units==="imperial" && "border-[#00ADB5] bg-[#19797d]"} `}
           >
             کلوین
           </button>
