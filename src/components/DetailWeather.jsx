@@ -4,6 +4,7 @@ import { GiMultiDirections } from "react-icons/gi";
 import { IoIosSpeedometer } from "react-icons/io";
 import { dateConverter } from "../../config/dateConverter";
 import e2p from "../../config/e2p";
+import getWindDirection from "../../config/windDirecttion";
 
 function DetailWeather({ currentData }) {
   return (
@@ -53,7 +54,7 @@ function DetailWeather({ currentData }) {
               <div className="flex flex-col pr-[10px] gap-y-2">
                 <p className="">جهت باد</p>
                 <span className="font-thin">
-                  {e2p(currentData["wind"]["deg"])}°
+                  {getWindDirection(currentData["wind"]["deg"])}
                 </span>
               </div>
             </div>
