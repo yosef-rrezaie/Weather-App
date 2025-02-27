@@ -6,6 +6,8 @@ import Favorite from "./Pages/Favorite";
 import Layout from "./layout/Layout";
 import { createContext, useState } from "react";
 import { useSelector } from "react-redux";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const ComponentsContext = createContext();
 
@@ -45,6 +47,15 @@ function App() {
 
   return (
     <QueryClientProvider client={queryClient}>
+      <ToastContainer
+        position="bottom-right" 
+        autoClose={1800} 
+        hideProgressBar="true" 
+        newestOnTop={false} 
+        // closeOnClick
+        rtl={true} 
+        theme="light"
+      />
       <ComponentsContext.Provider
         value={{
           favorite,
@@ -59,7 +70,7 @@ function App() {
           clickHandler,
           country,
           setCountry,
-          setCurrentCity
+          setCurrentCity,
         }}
       >
         <BrowserRouter>
