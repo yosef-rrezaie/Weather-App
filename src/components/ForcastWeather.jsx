@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import moment from "moment-jalaali";
 import { FaArrowDown, FaArrowUp, FaWind } from "react-icons/fa6";
 import e2p from "../../config/e2p";
+import { ComponentsContext } from "../App";
 
 function ForcastWeather({ weatherForcast }) {
+  const {dark} = useContext(ComponentsContext)
   moment.loadPersian({ usePersianDigits: true });
 
   let data = weatherForcast["list"];
@@ -36,13 +38,17 @@ function ForcastWeather({ weatherForcast }) {
   }
 
   return (
-    <div className="bg-white rounded-[9px] shadow grid grid-cols-1  p-[25px] gap-7 h-[550px] border border-solid border-gray-200">
+    <div
+      className={`bg-white rounded-[9px] shadow grid grid-cols-1  p-[25px] gap-7 h-[550px] border border-solid
+     border-gray-200 ${dark && "darkmood-bg darkmood-border"}`}
+    >
       <p>دمای {e2p(5)} روز آینده</p>
       {temp.map((item) => (
         <div
           key={item.index}
-          className="flex justify-around
-            items-center rounded-[7px]  p-[10px] border-[.5px] border-solid border-gray-100 shadow-sm	 "
+          className={`flex justify-around
+            items-center rounded-[7px]  p-[10px] border-[.5px] border-solid border-gray-100 
+            shadow-sm ${dark && "border-[#1e1c1c]"}  `}
         >
           <p className="w-3/4">
             {moment.unix(item["stamp"]).format("dddd") === "آدینه"

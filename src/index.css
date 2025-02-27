@@ -12,7 +12,7 @@
 }
 
 body {
-  background-color: #f1f0f0;
+  /* background-color: #f1f0f0; */
   box-sizing: border-box;
   height: 100vh;  
 }
@@ -23,4 +23,17 @@ body {
 
 .active {
   @apply text-blue-500
+}
+
+
+.darkmood-home {
+  background-color: #242426;
+}
+
+.darkmood-bg {
+  background-color: #171616;
+}
+
+.darkmood-border {
+  border-color: #2b2828;
 }

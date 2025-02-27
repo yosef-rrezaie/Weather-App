@@ -20,6 +20,7 @@ function FetchWeatherData({ data }) {
     setCountry,
     favorite,
     setFavorite,
+    dark
   } = useContext(ComponentsContext);
 
   useEffect(() => {
@@ -63,7 +64,7 @@ function FetchWeatherData({ data }) {
       {currentDataPending || weatherForcastPending === true ? (
         <Loading />
       ) : (
-        <div>
+        <div className={`${dark && "text-[white]"}`}>
           <div className="mx-[43px] mt-[42px]">
             <p className="font-extrabold">جست و جو های اخیر</p>
             <SearchRecently />
@@ -71,7 +72,7 @@ function FetchWeatherData({ data }) {
           <div className="flex justify-between mx-[43px] mt-[30px] ">
             <p className="text-[1.3rem] font-extrabold">موقعیت من</p>
             <IoIosRefreshCircle
-              className="text-blue-300 text-[2rem]"
+              className={`text-blue-300 text-[2rem] ${dark && "text-white "} `}
               onClick={refetchHandler}
             />
           </div>

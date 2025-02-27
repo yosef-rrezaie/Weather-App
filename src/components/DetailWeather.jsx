@@ -1,23 +1,26 @@
-import React from "react";
+import React, { useContext } from "react";
 import { BsFillSunriseFill, BsFillSunsetFill } from "react-icons/bs";
 import { GiMultiDirections } from "react-icons/gi";
 import { IoIosSpeedometer } from "react-icons/io";
 import { dateConverter } from "../../config/dateConverter";
 import e2p from "../../config/e2p";
 import getWindDirection from "../../config/windDirecttion";
+import { ComponentsContext } from "../App";
 
 function DetailWeather({ currentData }) {
+  const {dark} = useContext(ComponentsContext)
   return (
-    <div className="bg-white rounded-[9px] shadow p-[25px] h-[300px] border border-solid border-gray-200">
+    <div className={`bg-white rounded-[9px] shadow p-[25px] h-[300px] border border-solid 
+    border-gray-200 ${dark && "darkmood-bg darkmood-border"} `}>
       <p>جزئیات آب و هوا</p>
       <div className="flex flex-wrap">
-        <div className="w-1/2">
-          <div className="flex justify-between mt-[30px]">
-            <div className="flex items-center">
+        <div className={`w-1/2`}>
+          <div className={`flex  justify-between mt-[30px] ${dark && "border-[#1e1c1c]"}`}>
+            <div className={`flex items-center ${dark && "border-[#1e1c1c]"}`}>
               <span>
                 <BsFillSunriseFill className="text-[1.7rem] text-yellow-600" />
               </span>
-              <div className="flex flex-col pr-[10px] gap-y-2">
+              <div className={`flex flex-col pr-[10px] gap-y-2`}>
                 <p className="">طلوع</p>
                 <span className="font-thin">
                   {e2p(dateConverter(currentData["sys"]["sunrise"]), "sunrise")}{" "}

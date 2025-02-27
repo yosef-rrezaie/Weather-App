@@ -8,7 +8,7 @@ import { toast } from "react-toastify";
 import toastCreate from "../../config/toastCreate";
 
 function SearchRecently() {
-  const { setCityName, cityName } = useContext(ComponentsContext);
+  const { setCityName, cityName , dark } = useContext(ComponentsContext);
   const dispatch = useDispatch();
   const result = useSelector(
     (store) => store.SearchRecently.searchRecentlyObject
@@ -40,8 +40,8 @@ function SearchRecently() {
       {result.map((item, index) => (
         <div
           key={index}
-          className="relative w-[250px] bg-white py-[15px] px-[13px] rounded-[9px] shadow-sm flex 
-          justify-between items-center"
+          className={`bg-white relative w-[250px] py-[15px] px-[13px] rounded-[9px] shadow-sm flex 
+          justify-between items-center ${dark && "darkmood-bg darkmood-border"}`}
         >
           <div className="flex flex-col justify-between mx-[10px] gap-y-2 items-center">
             <p className="text-[17px] cursor-pointer" onClick={searchAgain}>
