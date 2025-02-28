@@ -10,11 +10,11 @@ import { ComponentsContext } from "../App";
 function DetailWeather({ currentData }) {
   const {dark} = useContext(ComponentsContext)
   return (
-    <div className={`bg-white rounded-[9px] shadow p-[25px] min-h-[300px] border border-solid
+    <div className={`bg-white rounded-[9px] shadow p-[25px] h-[250px] border border-solid max-sm:min-h-[450px]
     border-gray-200 ${dark && "darkmood-bg darkmood-border"} `}>
       <p>جزئیات آب و هوا</p>
       <div className="flex flex-wrap max-md:justify-between max-md:flex max-smm:flex-col">
-        <div className={`w-1/2`}>
+        <div className={`w-1/2 max-smm:w-[100%]`}>
           <div className={`flex  justify-between mt-[30px] ${dark && "border-[#1e1c1c]"}`}>
             <div className={`flex items-center ${dark && "border-[#1e1c1c]"}`}>
               <span>
@@ -31,7 +31,7 @@ function DetailWeather({ currentData }) {
           </div>
         </div>
 
-        <div className="w-1/2">
+        <div className={`w-1/2 max-smm:w-[100%]`}>
           <div className="flex justify-between mt-[30px]">
             <div className="flex items-center">
               <span>
@@ -48,7 +48,7 @@ function DetailWeather({ currentData }) {
           </div>
         </div>
 
-        <div className="w-1/2">
+        <div className={`w-1/2 max-smm:w-[100%]`}>
           <div className="flex justify-between mt-[30px]">
             <div className="flex items-center">
               <span>
@@ -64,7 +64,7 @@ function DetailWeather({ currentData }) {
           </div>
         </div>
 
-        <div className="w-1/2">
+        <div className={`w-1/2 max-smm:w-[100%]`}>
           <div className="flex justify-between mt-[30px]">
             <div className="flex items-center">
               <span>
