@@ -7,7 +7,7 @@ function ShowForcastWeather({ temp }) {
 
   return (
     <>
-      <div>
+      {/* <div>
         <p>
           {moment.unix(temp["stamp"]).format("dddd") === "آدینه"
             ? "جمعه"
@@ -26,7 +26,7 @@ function ShowForcastWeather({ temp }) {
             </p>
           </div>
         </div>
-      </div>
+      </div> */}
     </>
   );
 }
