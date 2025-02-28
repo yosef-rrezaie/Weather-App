@@ -78,6 +78,7 @@ function FetchWeatherData({ data }) {
                 className={` bg-white w-[29px] h-[29px] p-[5px] text-[2rem] rounded-[8px] ${
                   dark && "darkmood-bg"
                 }`}
+                onClick={refetchHandler}
               />
             </div>
             {/* <IoIosRefreshCircle
