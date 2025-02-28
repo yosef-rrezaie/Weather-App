@@ -46,3 +46,12 @@ body {
 .text-blue {
   color: #00ADB5;
 }
+
+.custom-scrollbar {
+  scrollbar-width: none;  /* برای فایرفاکس */
+  -ms-overflow-style: none; /* برای اینترنت اکسپلورر و اج */
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  display: none; /* برای کروم، سافاری و اوپرا */
+}
