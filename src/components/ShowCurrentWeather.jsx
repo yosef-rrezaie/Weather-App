@@ -100,7 +100,7 @@ function ShowCurrentWeather({ currentData }) {
           <div>
             <div dir="ltr" className="flex justify-evenly items-center">
               <p
-                className={`flex text-blue-800 text-[1.3rem] ${
+                className={`flex text-blue-800 text-[1.3rem] max-smm:text-[.9rem] ${
                   dark && "text-blue"
                 }`}
               >
@@ -109,7 +109,7 @@ function ShowCurrentWeather({ currentData }) {
                 <span>°</span>
               </p>
               <p
-                className={`flex text-red-800 text-[1.3rem] ${
+                className={`flex text-red-800 text-[1.3rem] max-smm:text-[.9rem] ${
                   dark && "text-red"
                 }`}
               >
@@ -120,7 +120,8 @@ function ShowCurrentWeather({ currentData }) {
             </div>
           </div>
         </div>
-        <div className="flex justify-between mt-[30px] max-lg:flex max-lg:flex-col max-lg:gap-y-2 max-mdl:flex-row">
+        <div className="flex justify-between mt-[30px] 
+        max-lg:flex max-lg:flex-col max-lg:gap-y-2 max-mdl:flex-row max-smm:flex-col max-smm:gap-[10px]">
           <div className="flex items-center">
             <span>
               <WiHumidity
