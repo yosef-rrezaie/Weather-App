@@ -15,7 +15,7 @@ function PageNotFound() {
   return (
     <div className="flex justify-center items-center h-[80vh] flex-col ">
       <TbError404
-        className={` text-blue-500 text-[10rem] ${dark && "text-blue"}`}
+        className={` text-blue-500 text-[10rem] `}
       />
       <p>صفحه مورد نظر موجود نمی باشد !</p>
       <button

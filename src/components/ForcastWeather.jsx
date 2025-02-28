@@ -48,7 +48,7 @@ function ForcastWeather({ weatherForcast }) {
           key={item.index}
           className={`flex justify-around
             items-center rounded-[7px]  p-[10px] border-[.5px] border-solid border-gray-100 
-            shadow-sm ${dark && "border-[#272626]"}  `}
+            shadow-sm ${dark && "forcast-border"}  `}
         >
           <p className="w-3/4">
             {moment.unix(item["stamp"]).format("dddd") === "آدینه"
