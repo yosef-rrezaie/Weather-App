@@ -12,7 +12,7 @@ import Loading from "./Loading";
 import { IoReload } from "react-icons/io5";
 
 function FetchWeatherData({ data }) {
-  console.log(data.lon)
+  console.log(data.lon);
   const {
     cityName,
     language,
@@ -67,15 +67,17 @@ function FetchWeatherData({ data }) {
         <Loading />
       ) : (
         <div className={`${dark && "text-[white]"}`}>
-          <div className="mx-[43px] mt-[42px]">
+          <div className="mx-[43px] mt-[42px] max-mdl:mx-[15px]">
             <p className="font-extrabold">جست و جو های اخیر</p>
             <SearchRecently />
           </div>
-          <div className="flex justify-between mx-[43px] mt-[30px] items-center ">
+          <div className="flex justify-between mx-[43px] mt-[30px] items-center max-mdl:mx-[15px] ">
             <p className="text-[1.3rem] font-extrabold">موقعیت من</p>
             <div className="rounded-[3px]">
               <IoReload
-                className={` bg-white w-[29px] h-[29px] p-[5px] text-[2rem] rounded-[8px] ${dark && "darkmood-bg"}`}
+                className={` bg-white w-[29px] h-[29px] p-[5px] text-[2rem] rounded-[8px] ${
+                  dark && "darkmood-bg"
+                }`}
               />
             </div>
             {/* <IoIosRefreshCircle
@@ -83,11 +85,12 @@ function FetchWeatherData({ data }) {
               onClick={refetchHandler}
             /> */}
           </div>
-          <div className="grid grid-cols-2 gap-5 mx-[43px] mb-[43px] mt-[25px]  min-h-[300px]">
+          <div className="grid grid-cols-2 gap-5 mx-[43px] mb-[43px] mt-[25px]  max-mdl:grid-cols-1 max-mdl:mx-[15px]">
             <ShowCurrentWeather currentData={currentData} />
             <Chart weatherForcast={weatherForcast} />
           </div>
-          <div className="mx-[43px] grid custom-grid-cols gap-5 min-h-[300px] pb-[20px]">
+          <div className="mx-[43px] grid custom-grid-cols gap-5 min-h-[300px] pb-[20px] max-mdl:mx-[15px] 
+          max-mdl:custom-grid-cols max-md:grid-cols-1">
             <DetailWeather currentData={currentData} />
             <ForcastWeather weatherForcast={weatherForcast} />
           </div>

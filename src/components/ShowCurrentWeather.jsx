@@ -85,7 +85,7 @@ function ShowCurrentWeather({ currentData }) {
   return (
     <div
       className={`flex bg-white rounded-[9px] shadow p-[25px] flex-grow border 
-    border-solid border-gray-200 ${dark && "darkmood-bg darkmood-border"} `}
+    border-solid border-gray-200 ${dark && "darkmood-bg darkmood-border"}`}
     >
       <div className="w-3/5 ">
         <div className="flex justify-between">
@@ -120,7 +120,7 @@ function ShowCurrentWeather({ currentData }) {
             </div>
           </div>
         </div>
-        <div className="flex justify-between mt-[30px]">
+        <div className="flex justify-between mt-[30px] max-lg:flex max-lg:flex-col max-lg:gap-y-2 max-mdl:flex-row">
           <div className="flex items-center">
             <span>
               <WiHumidity
