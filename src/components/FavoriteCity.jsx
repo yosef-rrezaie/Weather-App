@@ -32,7 +32,7 @@ function FavoriteCity() {
   console.log(cityName);
 
   return (
-    <div className="grid grid-cols-3 gap-[30px]  px-[43px] mt-[30px] flex-wrap">
+    <div className="grid grid-cols-2 gap-[30px]  px-[43px] mt-[30px] flex-wrap max-md:grid-cols-1 max-slm:px-[15px]">
       {result.map((item) => (
         <div
           key={item["lon"]}
@@ -74,7 +74,7 @@ function FavoriteCity() {
                 </div>
               </div>
             </div>
-            <div className="flex justify-between mt-[30px]">
+            <div className="flex justify-between mt-[30px] max-lg:flex-col max-lg:gap-[13px] max-md:flex-row max-slm:flex-col ">
               <div className="flex items-center">
                 <span>
                   <WiHumidity
