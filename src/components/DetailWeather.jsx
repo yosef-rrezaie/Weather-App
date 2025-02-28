@@ -10,10 +10,10 @@ import { ComponentsContext } from "../App";
 function DetailWeather({ currentData }) {
   const {dark} = useContext(ComponentsContext)
   return (
-    <div className={`bg-white rounded-[9px] shadow p-[25px] h-[300px] border border-solid 
+    <div className={`bg-white rounded-[9px] shadow p-[25px] h-[300px] border border-solid
     border-gray-200 ${dark && "darkmood-bg darkmood-border"} `}>
       <p>جزئیات آب و هوا</p>
-      <div className="flex flex-wrap">
+      <div className="flex flex-wrap max-md:justify-between max-md:flex">
         <div className={`w-1/2`}>
           <div className={`flex  justify-between mt-[30px] ${dark && "border-[#1e1c1c]"}`}>
             <div className={`flex items-center ${dark && "border-[#1e1c1c]"}`}>
