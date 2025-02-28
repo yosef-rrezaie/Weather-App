@@ -142,6 +142,7 @@ function HeaderComponent() {
           <CiSearch
             className="absolute top-[30%] left-[2%] text-[20px] text-blue-700"
             onClick={handleSearchClick} 
+            type="submit"
           />
         </div>
         <div className="flex items-center gap-2 absolute top-[7px] left-[7px]">
