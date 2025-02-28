@@ -47,6 +47,10 @@ body {
   color: #00ADB5;
 }
 
+.forcast-border {
+  border-color: #333232;
+}
+
 .custom-scrollbar {
   scrollbar-width: none;  /* برای فایرفاکس */
   -ms-overflow-style: none; /* برای اینترنت اکسپلورر و اج */
